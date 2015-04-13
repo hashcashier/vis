@@ -48,8 +48,8 @@ void mainLoopWorldGen() {
 							continue;
 
 						cnt += transformAverageAdd(tmp_mat2, p, q);
-						printf("T[A][B]:\n");
-						printMat(tmp_mat);
+						//printf("T[A][B]:\n");
+						//printMat(tmp_mat);
 
 					}
 					if(!cnt)
