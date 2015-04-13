@@ -180,7 +180,7 @@ int inferPosition() {
 			if(transformAverageAdd(tmp, position, quaternion_rot))
 				cnt++;
 			/*else
-				// TODO: research corrective method
+				// TODO: research corrective method (smoothing)
 				printf("Abnormal Quaternion:\n%4.2f\t%4.2f\t%4.2f\n%4.2f\t%4.2f\t%4.2f\t%4.2f\t\n",
 				position[0], position[1], position[2],
 				quaternion_rot[0], quaternion_rot[1], quaternion_rot[2], quaternion_rot[3]);
