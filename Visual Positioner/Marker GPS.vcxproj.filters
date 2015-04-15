@@ -32,9 +32,6 @@
     <ClInclude Include="constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ocvCalib3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="plumber.h">
       <Filter>Header Files</Filter>
     </ClInclude>

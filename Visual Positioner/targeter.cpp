@@ -18,118 +18,102 @@ void loadConfig() {
 			target[i].position[j] = 0;
 	}
 	target[0].measurements = SAMPLES + 1;
-
-	/*
-	cv::FileStorage fs("out_camera_data.xml", cv::FileStorage::READ);
-	if (!fs.isOpened()) {
-		cout << "Could not open out_camera_data.xml. Using identity matrices for undistortion process." << endl;
-		cameraMatrix = distortionCoeff = cv::Mat(identityMatrix);
-	} else {
-		fs["Camera_Matrix"] >> cameraMatrix;
-		fs["Distortion_Coefficients"] >> distortionCoeff;
-	}
-	*/
-}
-
-void init() {
-    ARParam  wparam;
-    
-    /* open the video path */
-    if( arVideoOpen( vconf ) < 0 ) exit(0);
-    /* find the size of the window */
-    if( arVideoInqSize(&xsize, &ysize) < 0 ) exit(0);
-    printf("Image size (x,y) = (%d,%d)\n", xsize, ysize);
-
-    /* set the initial camera parameters */
-    if( arParamLoad(cparaname.c_str(), 1, &wparam) < 0 ) {
-       printf("Camera parameter load error !!\n");
-        exit(0);
-    }
-    arParamChangeSize( &wparam, xsize, ysize, &cparam );
-    arInitCparam( &cparam );
-    printf("*** Camera Parameter ***\n");
-    arParamDisp( &cparam );
-
-    /* open the graphics window */
-    argInit( &cparam, 1.0, 0, 0, 0, 0 );
-
-    for(int i = 0; i < targets; i++)
-		if( (target[i].id = arLoadPatt(target[i].patternFile.c_str())) < 0 ) {
-			printf("Target pattern %d load error!!\n", i);
-			exit(0);
-		} else {
-			target_set.insert(target[i].id);
-			printf("Target %d loaded.\n", target[i].id);
-		}
-
-    arDebug = 0;
-}
-
-void cleanup()
-{
-	arVideoCapStop();
-    arVideoClose();
-    argCleanup();
 }
 
 int detectMarkers() {
+    static int      contF2 = 0;
 	ARUint8         *dataPtr;
+    int             imageProcMode;
+    int             debugMode;
+    //ARdouble        err;
+
     /* grab a vide frame */
     if( (dataPtr = (ARUint8 *)arVideoGetImage()) == NULL ) {
         arUtilSleep(2);
         return -1;
     }
 
-    glClearColor( 0.0, 0.0, 0.0, 0.0 );
-    glClearDepth( 1.0 );
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    argDrawMode2D();
-	/*//============================================
-	*	OpenCV Should be implemented below this line
-	*/
-	// Create OpenCV image with 4 channels.
-    IplImage* image;
-	image = cvCreateImage(cvSize(xsize, ysize), IPL_DEPTH_8U, 4);	
+	argDrawMode2D(vp);
+    arGetDebugMode( arHandle, &debugMode );
+    if( debugMode == 0 ) {
+        argDrawImage( dataPtr );
+    }
+    else {
+        arGetImageProcMode(arHandle, &imageProcMode);
+        if( imageProcMode == AR_IMAGE_PROC_FRAME_IMAGE ) {
+            argDrawImage( arHandle->labelInfo.bwImage );
+        }
+        else {
+            argDrawImageHalf( arHandle->labelInfo.bwImage );
+        }
+    }
 
-    // Get video frame from ARToolkit
-	image->imageData = (char *)dataPtr;
-	
-    // Send above image frame to perform OpenCV function
-	//IplImage* colorHSVImage = colorHSV->processFrame(imgTest,hue,hueMax,saturation,saturationMax,value,valueMax,rmin,rmax,gmin,gmax,bmin,bmax);
-
-	// UNDISTORT!!!!!!!!!!!!!!!!!!!!
-	/*
-	IplImage *r = cvCreateImage(cvGetSize(image),8,1);
-	IplImage *g = cvCreateImage(cvGetSize(image),8,1);
-	IplImage *b = cvCreateImage(cvGetSize(image),8,1);
-	IplImage *a = cvCreateImage(cvGetSize(image),8,1);
-	cvSplit(image, r, g, b, a);
-	*/
-
-        
-    // Display image on screen
-    argDispImage( (unsigned char *)image->imageData, 0, 0 );
-
-	/*
-	*	OpenCV Should be implemented before this line
-	*///==============================================
     /* detect the markers in the video frame */
 	//argDispImage( dataPtr, 0, 0 );
 
-    if( arDetectMarker((unsigned char *)image->imageData, thresh, &marker_info, &marker_num) < 0 ) {
+    if( arDetectMarker(arHandle, dataPtr) < 0 ) {
         cleanup();
         exit(0);
     }
 
+    if( count_ar % 60 == 0 ) {
+        sprintf(fps, "%f[fps]", 60.0/arUtilTimer());
+        arUtilTimerReset();
+    }
+    count_ar++;
+    glColor3f(0.0f, 1.0f, 0.0f);
+    argDrawStringsByIdealPos(fps, 10, ysize-30);
+
+    marker_num = arGetMarkerNum( arHandle );
+    if( marker_num == 0 ) {
+        argSwapBuffers();
+        return 0;
+    }
+
+    /* check for object visibility */
+    marker_info =  arGetMarker( arHandle ); 
+	/*
+    int k = -1;
+    for(int j = 0; j < marker_num; j++ ) {
+        ARLOG("ID=%d, CF = %f\n", marker_info[j].id, marker_info[j].cf);
+        if( patt_id == markerInfo[j].id ) {
+            if( k == -1 ) {
+                if (markerInfo[j].cf >= 0.7) k = j;
+            } else if( markerInfo[j].cf > markerInfo[k].cf ) k = j;
+        }
+    }
+    if( k == -1 ) {
+        contF2 = 0;
+        argSwapBuffers();
+        return;
+    }
+
+    if( contF && contF2 ) {
+        err = arGetTransMatSquareCont(ar3DHandle, &(markerInfo[k]), patt_trans, patt_width, patt_trans);
+    }
+    else {
+        err = arGetTransMatSquare(ar3DHandle, &(markerInfo[k]), patt_width, patt_trans);
+    }
+    sprintf(errValue, "err = %f", err);
+    glColor3f(0.0f, 1.0f, 0.0f);
+    argDrawStringsByIdealPos(fps, 10, ysize-30);
+    argDrawStringsByIdealPos(errValue, 10, ysize-60);
+    //ARLOG("err = %f\n", err);
+
+    contF2 = 1;
+    draw(patt_trans);
+	*/
+
+    argSwapBuffers();
+	//-----
 	glColor3f( 1.0, 0.0, 0.0 );
 	glLineWidth(6.0);
 
 	for(int i = 0; i < marker_num; i++ ) {
-		argDrawSquare(marker_info[i].vertex,0,0);
+		//argDrawSquare(marker_info[i].vertex,0,0);
 	}
 
-	cvReleaseImage(&image);
-    arVideoCapNext();
+//    arVideoCapNext();
 	return marker_num;
 }
 
@@ -175,7 +159,7 @@ int inferPosition() {
 				continue;
 			seen.insert(id);
 			glColor3f( 0.0, 1.0, 0.0 );
-			argDrawSquare(marker_info[i].vertex,0,0);
+			//argDrawSquare(marker_info[i].vertex,0,0);
 
 			getResultRaw(&marker_info[i], target[id].marker_trans, target[id].marker_trans_inv);
 
@@ -230,7 +214,9 @@ void getResultRaw( ARMarkerInfo *marker_info, double xyz[3][4] , double mxyz[3][
 {
 	int id = marker_info->id;
 
-	if( arGetTransMat(marker_info, target[id].center, target[id].width, xyz) < 0 ) return;
+	arGetTransMatSquare(ar3DHandle, marker_info, target[id].width, xyz);
+
+//	if( arGetTransMat(marker_info, target[id].center, target[id].width, xyz) < 0 ) return;
 //	if( arGetTransMatCont(marker_info, xyz, target[id].center, target[id].width, xyz) < 0 ) return;
 
     if( arUtilMatInv(xyz, mxyz) < 0 ) return;

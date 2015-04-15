@@ -72,7 +72,7 @@ void mainLoopWorldGen() {
 					measured_num++;
 				}
 				measurements++;
-				argDrawSquare(marker_info[i].vertex,0,0);
+				//argDrawSquare(marker_info[i].vertex,0,0);
 			}
 		}
 

@@ -11,16 +11,49 @@ mutex	loc_mtx;
 double	loc[3];
 
 void	updatePosition(double **matrix);
+void	init(int argc, char *argv[]);
+void	cleanup();
+void	keyFunc( unsigned char key, int x, int y );
 
 string inputResponse;
 
-int		runMode;
+int				runMode;
+int				xsize;
+int				ysize;
+int             thresh = 100;
+int             outputMode = 0;
+int             flipMode = 0;
+int             mouse_ox;
+int             mouse_oy;
+int             mouse_st = 0;
+int             disp_mode = 1;
+double          a =   0.0;
+double          b = -45.0;
+double          r = 500.0;
 
+
+ARHandle           *arHandle;
+AR3DHandle         *ar3DHandle;
+ARGViewportHandle  *vp;
+ARParamLT          *gCparamLT = NULL;
+ARParam				cparam;
 
 // externals from targeter.h
 extern	void	loadConfig();
 extern	void	init();
 extern	void	mainLoopTargeter();
+extern	int				targets;
+extern	marker			*target;
+extern	set<int>		target_set;
+extern	set<int>		seen;
+extern	int                 count_ar;
+extern	char                fps[256];
+extern	char                errValue[256];
+extern	int                 distF;
+extern	int                 contF;
+
+
+
 
 // externals from worldgen.h
 extern	void	mainLoopWorldGen();

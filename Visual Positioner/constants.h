@@ -20,20 +20,19 @@
 #include <future>
 /* openGL */
 #ifndef __APPLE__
+#  include <GL/gl.h>
 #  include <GL/glut.h>
 #else
+#  include <OpenGL/gl.h>
 #  include <GLUT/glut.h>
 #endif
 /* ARToolkit */
-#include <AR/gsub.h>
-#include <AR/param.h>
 #include <AR/ar.h>
+#include <AR/gsub.h>
 #include <AR/video.h>
+//#include <AR/param.h>
 /* OpenCV */
-#include <opencv2\opencv.hpp>
-#include <opencv2\core\core.hpp>
-#include <opencv2\imgproc\imgproc.hpp>
-#include <opencv2\highgui\highgui.hpp>
+#include <opencv/cv.h>
 
 using namespace std;
 
@@ -41,7 +40,7 @@ using namespace std;
 
 #define RUN_MODE_NEW_WORLD		1
 #define RUN_MODE_POSITIONER		2
-#define	RUN_MODE_OPENCV			3
+#define	RUN_MODE_CALIBRATE		3
 
 #define TRANS_MAT_ROWS	3
 #define	TRANS_MAT_COLS	4
@@ -57,6 +56,10 @@ using namespace std;
 
 #define PLUMBER_PIPE_NAME	"\\\\.\\pipe\\markergps"
 
+#define	CPARA_NAME	"Data/camera_para.dat"
+#define VPARA_NAME  "Data/cameraSetting-%08x%08x.dat"
+
+
 struct marker {
 	int				id, idx;
 	int				measurements;
@@ -66,6 +69,7 @@ struct marker {
 	double			center[2];
 	double			width;
 	string			patternFile;
+	ARPattHandle    *arPattHandle;
 	ARMarkerInfo    *marker_info;
 	double			marker_trans[TRANS_MAT_ROWS][TRANS_MAT_COLS];
 	double			marker_trans_inv[TRANS_MAT_ROWS][TRANS_MAT_COLS];

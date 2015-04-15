@@ -8,27 +8,12 @@ using namespace std;
 
 /* camera information */
 string			cparaname;// = "Data/camera_para.dat";
+string			vparaname;
 #ifdef _WIN32
 char			*vconf = "Data\\WDM_camera_flipV.xml";
 #else
 char			*vconf = "";
 #endif
-
-char           *cparam_name    = "Data/camera_para.dat";
-ARParam         cparam;
-
-int             xsize;
-int             ysize;
-int             thresh = 100;
-int             outputMode = 0;
-
-int             mouse_ox;
-int             mouse_oy;
-int             mouse_st = 0;
-int             disp_mode = 1;
-double          a =   0.0;
-double          b = -45.0;
-double          r = 500.0;
 
 double			pos[3];// = {0, 0 ,0};
 double			trans[3][4];
@@ -38,12 +23,17 @@ marker			*target;
 set<int>		target_set;
 set<int>		seen;
 
+int                 count_ar = 0;
+char                fps[256];
+char                errValue[256];
+int                 distF = 0;
+int                 contF = 0;
+
+
 
 void loadConfig();
-void cleanup();
 int detectMarkers();
 void mainLoopTargeter();
-void init();
 void getResultRaw( ARMarkerInfo *marker_info, double xyz[3][4] , double mxyz[3][4] );
 int inferPosition();
 
@@ -56,8 +46,15 @@ bool marker_comparison(ARMarkerInfo A, ARMarkerInfo B) {
 }
 
 // externals from positioner.h
+extern	void	cleanup();
 extern	int		runMode;
 extern	void	updatePosition(double **matrix);
+extern	int     xsize;
+extern	int		ysize;
+extern	ARHandle           *arHandle;
+extern	AR3DHandle         *ar3DHandle;
+extern	ARGViewportHandle  *vp;
+
 
 // externals from worldgen.h
 extern	void printMat(double mat[3][4]);
