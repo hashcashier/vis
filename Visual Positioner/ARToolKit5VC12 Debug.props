@@ -13,7 +13,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(ARTOOLKIT5VC12_ROOT)\lib\win32-i386;$(ARTOOLKIT5_ROOT)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>AR.lib;ARICP.lib;ARgsub.lib;ARvideo.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ARd.lib;ARICPd.lib;ARgsubd.lib;ARvideod.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

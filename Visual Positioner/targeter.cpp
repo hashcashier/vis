@@ -65,8 +65,7 @@ int detectMarkers() {
     argDrawStringsByIdealPos(fps, 10, ysize-30);
 
     marker_num = arGetMarkerNum( arHandle );
-    if( marker_num == 0 ) {
-        argSwapBuffers();
+    if( !marker_num ) {
         return 0;
     }
 
@@ -104,7 +103,7 @@ int detectMarkers() {
     draw(patt_trans);
 	*/
 
-    argSwapBuffers();
+    //argSwapBuffers();
 	//-----
 	glColor3f( 1.0, 0.0, 0.0 );
 	glLineWidth(6.0);

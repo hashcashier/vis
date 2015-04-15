@@ -1,6 +1,7 @@
 #include "plumber.h"
 
 void openPipe() {
+	return;
 	lock_guard<mutex> lk(pipe_mtx);
 	pipe = CreateNamedPipe(
 		PLUMBER_PIPE_NAME,

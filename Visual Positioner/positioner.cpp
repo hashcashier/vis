@@ -54,9 +54,6 @@ int main(int argc, char **argv) {
 		// Initialize Positoner
 		init(argc, argv);
 
-		// Start capturing video
-		arVideoCapStart();
-
 		if(runMode == RUN_MODE_NEW_WORLD) {
 			argSetDispFunc( mainLoopWorldGen, 1 );
 		} else {
@@ -234,14 +231,14 @@ void init(int argc, char *argv[]) {
 		if( (target[i].arPattHandle = arPattCreateHandle()) == NULL ) {
 			ARLOGe("Error: arPattCreateHandle.\n");
 			exit(0);
-		}
-		if( (target[i].id=arPattLoad(target[i].arPattHandle, target[i].patternFile.c_str())) < 0 ) {
+		} else if( (target[i].id=arPattLoad(target[i].arPattHandle, target[i].patternFile.c_str())) < 0 ) {
 			ARLOGe("pattern load error !!\n");
 			exit(0);
-		}
-		arPattAttach( arHandle, target[i].arPattHandle );
+		} else
+			arPattAttach( arHandle, target[i].arPattHandle );
 
-    //arDebug = 0;
+	printf("Init success. %d markers loaded.\n", targets);
+	//arDebug = 0;
 }
 
 void cleanup()
