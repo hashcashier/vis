@@ -6,7 +6,7 @@
 
 using namespace std;
 
-//mutex	pipe_mtx;
+mutex	pipe_mtx;
 HANDLE	pipe;
 BOOL	connected;
 BOOL	sent;

@@ -57,7 +57,7 @@ bool marker_comparison(ARMarkerInfo A, ARMarkerInfo B) {
 
 // externals from positioner.h
 extern	int		runMode;
-extern	void	updatePosition(double x, double y, double z);
+extern	void	updatePosition(double **matrix);
 
 // externals from worldgen.h
 extern	void printMat(double mat[3][4]);
@@ -70,4 +70,7 @@ extern	void transformSmooth(	double destination[TRANS_MAT_ROWS][TRANS_MAT_COLS],
 								double A[TRANS_MAT_ROWS][TRANS_MAT_COLS],
 								double B[TRANS_MAT_ROWS][TRANS_MAT_COLS],
 								double factor);
+
+// externals from plumber.h
+extern	BOOL connected;
 #endif

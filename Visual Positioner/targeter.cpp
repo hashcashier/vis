@@ -145,8 +145,12 @@ void mainLoopTargeter() {
 
 	int cnt = inferPosition();
 
-	if(cnt) {
-		updatePosition(pos[0], pos[1], pos[2]);
+	if(cnt && connected) {
+		double **tmp = new double*[3];
+		for(int i = 0; i < 3; i++)
+			tmp[i] = new double[4];
+		memcpy(tmp, trans, sizeof trans);
+		thread luigi(updatePosition, tmp);
 	}
 
     argSwapBuffers();

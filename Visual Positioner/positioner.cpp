@@ -68,15 +68,19 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
-void updatePosition(double x, double y, double z) {
+void updatePosition(double** matrix) {
 	lock_guard<mutex> lk(loc_mtx);
 
-	loc[0] = x;
-	loc[1] = y;
-	loc[2] = z;
-
 	ostringstream oss;
-	oss << loc[0] << ' ' << loc[1] << ' ' << loc[2] << endl;
+	for(int i = 0; i < 3; i++) {
+		for(int j = 0; j < 4; j++) {
+			if(j) oss << '\t';
+			oss << matrix[i][j];
+		}
+		delete matrix[i];
+		oss << endl;
+	}
+	delete matrix;
 
 	sendMessage(oss.str());
 }

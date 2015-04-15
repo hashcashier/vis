@@ -10,7 +10,7 @@ using namespace std;
 mutex	loc_mtx;
 double	loc[3];
 
-void	updatePosition(double x, double y, double z);
+void	updatePosition(double **matrix);
 
 string inputResponse;
 

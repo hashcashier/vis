@@ -55,6 +55,8 @@ using namespace std;
 #define FLAT_MAT_THRESHOLD_DOT	0.99
 #define FLAT_MAT_THRESHOLD_DZ	5
 
+#define PLUMBER_PIPE_NAME	"\\\\.\\pipe\\markergps"
+
 struct marker {
 	int				id, idx;
 	int				measurements;
