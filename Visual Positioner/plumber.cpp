@@ -1,8 +1,6 @@
 #include "plumber.h"
 
 void openPipe() {
-	return;
-	lock_guard<mutex> lk(pipe_mtx);
 	pipe = CreateNamedPipe(
 		PLUMBER_PIPE_NAME,
 		PIPE_ACCESS_OUTBOUND,
@@ -31,9 +29,8 @@ void openPipe() {
 
 
 void sendMessage(string msg) {
+	if (!connected) return;
 	lock_guard<mutex> lk(pipe_mtx);
-	if(!connected)
-		return;
 	sent = WriteFile(pipe, msg.c_str(), msg.length() * sizeof(char), &numBytesWritten, NULL);
 	if(sent)
 		cout << numBytesWritten << " bytes sent out of " << msg.length() * sizeof(char) << '.' << endl;
@@ -42,6 +39,7 @@ void sendMessage(string msg) {
 }
 
 void closePipe() {
+	if (!connected) return;
 	lock_guard<mutex> lk(pipe_mtx);
 	CloseHandle(pipe);
 	cout << "Good bye!" << endl;

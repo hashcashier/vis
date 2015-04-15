@@ -59,6 +59,7 @@ int main(int argc, char **argv) {
 		} else {
 			// Send a thread off to wait for client
 			thread mario(openPipe);
+			mario.detach();
 			argSetDispFunc( mainLoopTargeter, 1 );
 		}
 

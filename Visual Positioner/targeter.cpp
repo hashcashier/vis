@@ -134,6 +134,7 @@ void mainLoopTargeter() {
 			tmp[i] = new double[4];
 		memcpy(tmp, trans, sizeof trans);
 		thread luigi(updatePosition, tmp);
+		luigi.detach();
 	}
 
     argSwapBuffers();
