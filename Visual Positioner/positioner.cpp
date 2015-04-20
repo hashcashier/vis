@@ -228,15 +228,19 @@ void init(int argc, char *argv[]) {
         exit(0);
 	}
 
-    for(int i = 0; i < targets; i++)
-		if( (target[i].arPattHandle = arPattCreateHandle()) == NULL ) {
-			ARLOGe("Error: arPattCreateHandle.\n");
-			exit(0);
-		} else if( (target[i].id=arPattLoad(target[i].arPattHandle, target[i].patternFile.c_str())) < 0 ) {
+	if ((arPattHandle = arPattCreateHandle()) == NULL ) {
+		ARLOGe("Error: arPattCreateHandle.\n");
+		exit(0);
+	} 
+
+	for (int i = 0; i < targets; i++)
+		if( (target[i].id=arPattLoad(arPattHandle, target[i].patternFile.c_str())) < 0 ) {
 			ARLOGe("pattern load error !!\n");
 			exit(0);
 		} else
-			arPattAttach( arHandle, target[i].arPattHandle );
+			arPattAttach(arHandle, arPattHandle),
+			target_set.insert(target[i].id),
+			printf("Target %d loaded.\n", target[i].id);
 
 	printf("Init success. %d markers loaded.\n", targets);
 	//arDebug = 0;
@@ -247,8 +251,7 @@ void cleanup()
     arVideoCapStop();
     argCleanup();
 	arPattDetach(arHandle);
-	for(int i = 0; i < targets; i++)
-		arPattDeleteHandle(target[i].arPattHandle);
+	arPattDeleteHandle(arPattHandle);
 	ar3DDeleteHandle(&ar3DHandle);
 	arDeleteHandle(arHandle);
     arParamLTFree(&gCparamLT);

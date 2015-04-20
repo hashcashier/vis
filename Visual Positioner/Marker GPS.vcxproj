@@ -73,6 +73,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="picasso.cpp" />
     <ClCompile Include="plumber.cpp" />
     <ClCompile Include="positioner.cpp" />
     <ClCompile Include="targeter.cpp" />
@@ -80,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h" />
+    <ClInclude Include="picasso.h" />
     <ClInclude Include="plumber.h" />
     <ClInclude Include="positioner.h" />
     <ClInclude Include="targeter.h" />

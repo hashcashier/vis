@@ -16,6 +16,8 @@ void loadConfig() {
 			target[i].quaternion_rot[j] = 0;
 		for(int j = 0; j < POS_DIMS; j++)
 			target[i].position[j] = 0;
+
+		target[i].filter = arFilterTransMatInit(AR_FILTER_TRANS_MAT_SAMPLE_RATE_DEFAULT, AR_FILTER_TRANS_MAT_CUTOFF_FREQ_DEFAULT);
 	}
 	target[0].measurements = SAMPLES + 1;
 }
@@ -67,52 +69,27 @@ int detectMarkers() {
     marker_num = arGetMarkerNum( arHandle );
     if( !marker_num ) {
         return 0;
-    }
-
-    /* check for object visibility */
-    marker_info =  arGetMarker( arHandle ); 
-	/*
-    int k = -1;
-    for(int j = 0; j < marker_num; j++ ) {
-        ARLOG("ID=%d, CF = %f\n", marker_info[j].id, marker_info[j].cf);
-        if( patt_id == markerInfo[j].id ) {
-            if( k == -1 ) {
-                if (markerInfo[j].cf >= 0.7) k = j;
-            } else if( markerInfo[j].cf > markerInfo[k].cf ) k = j;
-        }
-    }
-    if( k == -1 ) {
-        contF2 = 0;
-        argSwapBuffers();
-        return;
-    }
-
-    if( contF && contF2 ) {
-        err = arGetTransMatSquareCont(ar3DHandle, &(markerInfo[k]), patt_trans, patt_width, patt_trans);
-    }
-    else {
-        err = arGetTransMatSquare(ar3DHandle, &(markerInfo[k]), patt_width, patt_trans);
-    }
-    sprintf(errValue, "err = %f", err);
-    glColor3f(0.0f, 1.0f, 0.0f);
-    argDrawStringsByIdealPos(fps, 10, ysize-30);
-    argDrawStringsByIdealPos(errValue, 10, ysize-60);
-    //ARLOG("err = %f\n", err);
-
-    contF2 = 1;
-    draw(patt_trans);
-	*/
-
-    //argSwapBuffers();
-	//-----
-	glColor3f( 1.0, 0.0, 0.0 );
-	glLineWidth(6.0);
-
-	for(int i = 0; i < marker_num; i++ ) {
-		//argDrawSquare(marker_info[i].vertex,0,0);
 	}
 
-//    arVideoCapNext();
+    /* grab marker transformations */
+    marker_info =  arGetMarker( arHandle ); 
+	
+	for (int i = 0; i < targets; i++)
+		target[i].validPrev = target[i].valid,
+		target[i].valid = false,
+		target[i].idx = -1;
+
+	recognized_targets = 0;
+	sort(marker_info, marker_info + marker_num, marker_comparison);
+	for (int i = 0; i < marker_num; i++) {
+		int id = marker_info[i].id;
+		if (marker_info[i].cf > 0.7 && target_set.count(id) && target[id].idx == -1) {
+			target[id].idx = i;
+			recognized_targets++;
+			getResultRaw(&marker_info[i], target[id].marker_trans, target[id].marker_trans_inv);
+		}
+	}
+
 	return marker_num;
 }
 
@@ -142,69 +119,42 @@ void mainLoopTargeter() {
 
 int inferPosition() {
 	int cnt = 0;
-	double tmp[3][4];
 	double quaternion_rot[QUAT_DIMS], position[POS_DIMS];
 	memset(quaternion_rot, 0, sizeof quaternion_rot);
 	memset(position, 0, sizeof position);
 
-	sort(marker_info, marker_info + marker_num, marker_comparison);
-
-	seen.clear();
-	for(int i = 0; i < marker_num; i++) {
+	for (int i = 0; i < marker_num; i++) {
 		int id = marker_info[i].id;
-		target[id].idx = -1;
-		if(marker_info[i].cf > 0.7 && !seen.count(id) && target_set.count(id)) {
-			target[id].idx = i;
-			if(target[id].measurements <= SAMPLES && runMode != RUN_MODE_POSITIONER)
+		glColor3f(1.0f, 0.0f, 0.0f);
+		if (target[id].idx == i && (target[id].measurements > SAMPLES || runMode == RUN_MODE_POSITIONER)) {
+			glColor3f(1.0f, 1.0f, 0.0f);
+
+			if (!agreeWithMajority(id))
 				continue;
-			seen.insert(id);
-			glColor3f( 0.0, 1.0, 0.0 );
-			//argDrawSquare(marker_info[i].vertex,0,0);
 
-			getResultRaw(&marker_info[i], target[id].marker_trans, target[id].marker_trans_inv);
-
-			arUtilMatMul(target[id].transformation, target[id].marker_trans_inv, tmp);
-
-			if(transformAverageAdd(tmp, position, quaternion_rot))
-				cnt++;
-			/*else
-				// TODO: research corrective method (smoothing)
-				printf("Abnormal Quaternion:\n%4.2f\t%4.2f\t%4.2f\n%4.2f\t%4.2f\t%4.2f\t%4.2f\t\n",
-				position[0], position[1], position[2],
-				quaternion_rot[0], quaternion_rot[1], quaternion_rot[2], quaternion_rot[3]);
-			*/
+			if (!transformAverageAdd(target[id].inferred_position, position, quaternion_rot))
+				continue;
 
 			if(runMode == RUN_MODE_POSITIONER) {
 				printf("%d (%f) Says:\n", id, marker_info[i].cf),
 				printMat(target[id].transformation);
 				printMat(target[id].marker_trans_inv);
-				printMat(tmp);
+				printMat(target[id].inferred_position);
 			}
+			cnt++;
+			glColor3f(0.0f, 1.0f, 0.0f);
 		}
+		draw(target[id].marker_trans);
 	}
 
-
+	double inferred[3][4];
 	if(cnt) {
-		
-		transformAverageNormalize(tmp, position, quaternion_rot, cnt);
+		transformAverageNormalize(inferred, position, quaternion_rot, cnt);
 
-		bool significant = true;
-		/*
-		for(int i = 0; i < TRANS_MAT_ROWS; i++)
-			if(fabs(tmp[i][3] - trans[i][3]) > MOVEMENT_THRESHOLD) {
-				printf("%d\t%f\t%f\n", i, tmp[i][3], trans[i][3]);
-				significant = true;
-				break;
-			}
-		*/
-				
-		if(significant) {
-			memcpy(trans, tmp, sizeof tmp);
-			//transformSmooth(trans, trans, tmp, MOVEMENT_FACTOR);
-			if(runMode == RUN_MODE_POSITIONER)
-				printf("%d Markers Say:\n", cnt),
-				printMat(trans);
-		}
+		memcpy(trans, inferred, sizeof inferred);
+		if(runMode == RUN_MODE_POSITIONER)
+			printf("%d Markers Say:\n", cnt),
+			printMat(trans);
 	}
 
 	return cnt;
@@ -214,12 +164,36 @@ void getResultRaw( ARMarkerInfo *marker_info, double xyz[3][4] , double mxyz[3][
 {
 	int id = marker_info->id;
 
-	arGetTransMatSquare(ar3DHandle, marker_info, target[id].width, xyz);
+	if (target[id].validPrev)
+		target[id].error = arGetTransMatSquareCont(ar3DHandle, marker_info, target[id].marker_trans, target[id].width, xyz);
+	else
+		target[id].error = arGetTransMatSquare(ar3DHandle, marker_info, target[id].width, xyz);
+	target[id].valid = true;
 
-//	if( arGetTransMat(marker_info, target[id].center, target[id].width, xyz) < 0 ) return;
-//	if( arGetTransMatCont(marker_info, xyz, target[id].center, target[id].width, xyz) < 0 ) return;
+	if (target[id].filter)
+		if (arFilterTransMat(target[id].filter, target[id].marker_trans, !target[id].validPrev) < 0)
+			ARLOGe("arFilterTransMat error with marker %d.\n", id);
 
     if( arUtilMatInv(xyz, mxyz) < 0 ) return;
 
+	if (target[id].measurements > SAMPLES || runMode == RUN_MODE_POSITIONER)
+		arUtilMatMul(target[id].transformation, target[id].marker_trans_inv, target[id].inferred_position);
+
     return;
+}
+
+bool agreeWithMajority(int id) {
+	int count = 0;
+	for (int i = 0; i < marker_num; i++) {
+		int sid = marker_info[i].id;
+		if (target[sid].idx == i && (target[sid].measurements > SAMPLES || runMode == RUN_MODE_POSITIONER)) {
+			bool ok = true;
+			for (int j = 0; ok && j < 3; j++)
+				if (fabs(target[id].inferred_position[j][3] - target[sid].inferred_position[j][3]) > CLOSE_MAT_THRESHOLD)
+					ok = false;
+			count += ok;
+		}
+	}
+	printf("%d agrees with %d out of %d.\n", id, count, recognized_targets);
+	return 2 * count >= recognized_targets;
 }

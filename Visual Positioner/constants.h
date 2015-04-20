@@ -28,6 +28,7 @@
 #endif
 /* ARToolkit */
 #include <AR/ar.h>
+#include <AR/arFilterTransMat.h>
 #include <AR/gsub.h>
 #include <AR/video.h>
 //#include <AR/param.h>
@@ -36,7 +37,7 @@
 
 using namespace std;
 
-#define SAMPLES 5
+#define SAMPLES 10
 
 #define RUN_MODE_NEW_WORLD		1
 #define RUN_MODE_POSITIONER		2
@@ -54,6 +55,8 @@ using namespace std;
 #define FLAT_MAT_THRESHOLD_DOT	0.99
 #define FLAT_MAT_THRESHOLD_DZ	5
 
+#define CLOSE_MAT_THRESHOLD	100
+
 #define PLUMBER_PIPE_NAME	"\\\\.\\pipe\\markergps"
 
 #define	CPARA_NAME	"Data/camera_para.dat"
@@ -61,18 +64,22 @@ using namespace std;
 
 
 struct marker {
-	int				id, idx;
-	int				measurements;
-	double			transformation[TRANS_MAT_ROWS][TRANS_MAT_COLS];
-	double			quaternion_rot[QUAT_DIMS];
-	double			position[POS_DIMS];
-	double			center[2];
-	double			width;
-	string			patternFile;
-	ARPattHandle    *arPattHandle;
-	ARMarkerInfo    *marker_info;
-	double			marker_trans[TRANS_MAT_ROWS][TRANS_MAT_COLS];
-	double			marker_trans_inv[TRANS_MAT_ROWS][TRANS_MAT_COLS];
+	bool					valid, validPrev;
+	int						id, idx;
+	int						measurements;
+	double					transformation[TRANS_MAT_ROWS][TRANS_MAT_COLS];
+	double					inferred_position[TRANS_MAT_ROWS][TRANS_MAT_COLS];
+	double					quaternion_rot[QUAT_DIMS];
+	double					position[POS_DIMS];
+	double					center[2];
+	ARdouble				width;
+	ARdouble				height;
+	ARdouble				error;
+	string					patternFile;
+	ARMarkerInfo			*marker_info;
+	ARFilterTransMatInfo	*filter;
+	double					marker_trans[TRANS_MAT_ROWS][TRANS_MAT_COLS];
+	double					marker_trans_inv[TRANS_MAT_ROWS][TRANS_MAT_COLS];
 };
 
 

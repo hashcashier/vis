@@ -32,10 +32,11 @@ double          b = -45.0;
 double          r = 500.0;
 
 
-ARHandle           *arHandle;
-AR3DHandle         *ar3DHandle;
-ARGViewportHandle  *vp;
-ARParamLT          *gCparamLT = NULL;
+ARHandle			*arHandle;
+AR3DHandle			*ar3DHandle;
+ARPattHandle		*arPattHandle;
+ARGViewportHandle	*vp;
+ARParamLT			*gCparamLT = NULL;
 ARParam				cparam;
 
 // externals from targeter.h

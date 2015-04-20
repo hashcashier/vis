@@ -27,6 +27,9 @@
     <ClCompile Include="worldgen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="picasso.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="worldgen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="picasso.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

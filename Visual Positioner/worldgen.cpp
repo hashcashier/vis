@@ -16,7 +16,7 @@ void mainLoopWorldGen() {
 	if(located_markers)
 		for(int i = 0; i < marker_num; i++) {
 			int id = marker_info[i].id, &measurements = target[id].measurements;
-			if(target_set.count(id) && measurements <= SAMPLES) {
+			if(target[id].idx == i && measurements <= SAMPLES) {
 				double tmp_mat[TRANS_MAT_ROWS][TRANS_MAT_COLS];
 				double tmp_mat2[TRANS_MAT_ROWS][TRANS_MAT_COLS];
 				double transformation[TRANS_MAT_ROWS][TRANS_MAT_COLS];
@@ -27,18 +27,14 @@ void mainLoopWorldGen() {
 				if(measurements < SAMPLES) {
 					glColor3f( 1.0, 1.0, 0.0 );
 					
-					getResultRaw(&marker_info[i], target[id].marker_trans, target[id].marker_trans_inv);
 					int cnt = 0;
-					for(auto it = seen.begin(); it != seen.end(); it++) {
-						int sid = *it;
+					for (int j = 0; j < marker_num; j++) {
+						int sid = marker_info[j].id;
 
-						/*
-						printf("%d This guy says.. %d\n", sid, id);
-						printMat(target[sid].transformation);
-						printMat(tmp_mat2);
-						*/
+						if(target[sid].idx != j || i == j || sid)
+							continue;
 
-						if(!parallelPlanes(target[sid].marker_trans, target[id].marker_trans))
+						if (!parallelPlanes(target[sid].marker_trans, target[id].marker_trans))
 							continue;
 
 						arUtilMatMul(target[sid].marker_trans_inv, target[id].marker_trans, tmp_mat);
@@ -48,8 +44,6 @@ void mainLoopWorldGen() {
 							continue;
 
 						cnt += transformAverageAdd(tmp_mat2, p, q);
-						//printf("T[A][B]:\n");
-						//printMat(tmp_mat);
 
 					}
 					if(!cnt)

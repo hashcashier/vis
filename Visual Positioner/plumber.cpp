@@ -24,6 +24,8 @@ void openPipe() {
 		cout << "Could not establish connection" << endl;
 		CloseHandle(pipe);
 		return;
+	} else {
+		cout << "Client connected!" << endl;
 	}
 }
 

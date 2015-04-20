@@ -40,6 +40,9 @@ double POINT_B[3][4] = {	{1,0,0, 1},
 							{0,1,0, 0},
 							{0,0,1, 0}	};
 
+// externals from picasso.h
+extern	void draw(ARdouble trans[3][4]);
+
 // Local functions
 void mainLoopWorldGen();
 void printMat(double mat[3][4]);

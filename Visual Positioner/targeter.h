@@ -18,10 +18,9 @@ char			*vconf = "";
 double			pos[3];// = {0, 0 ,0};
 double			trans[3][4];
 
-int				targets;
+int				targets, recognized_targets;
 marker			*target;
 set<int>		target_set;
-set<int>		seen;
 
 int                 count_ar = 0;
 char                fps[256];
@@ -36,6 +35,7 @@ int detectMarkers();
 void mainLoopTargeter();
 void getResultRaw( ARMarkerInfo *marker_info, double xyz[3][4] , double mxyz[3][4] );
 int inferPosition();
+bool agreeWithMajority(int id);
 
 ARMarkerInfo    *marker_info;
 int             marker_num;
@@ -70,4 +70,8 @@ extern	void transformSmooth(	double destination[TRANS_MAT_ROWS][TRANS_MAT_COLS],
 
 // externals from plumber.h
 extern	BOOL connected;
+
+// externals from picasso.h
+extern	void draw(ARdouble trans[3][4]);
+
 #endif
