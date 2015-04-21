@@ -16,7 +16,7 @@ void mainLoopWorldGen() {
 	if(located_markers)
 		for(int i = 0; i < marker_num; i++) {
 			int id = marker_info[i].id, &measurements = target[id].measurements;
-			if(target[id].idx == i && measurements <= SAMPLES) {
+			if(id != -1 && target[id].idx == i && measurements <= SAMPLES) {
 				double tmp_mat[TRANS_MAT_ROWS][TRANS_MAT_COLS];
 				double tmp_mat2[TRANS_MAT_ROWS][TRANS_MAT_COLS];
 				double transformation[TRANS_MAT_ROWS][TRANS_MAT_COLS];

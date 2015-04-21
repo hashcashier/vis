@@ -126,7 +126,7 @@ int inferPosition() {
 	for (int i = 0; i < marker_num; i++) {
 		int id = marker_info[i].id;
 		glColor3f(1.0f, 0.0f, 0.0f);
-		if (target[id].idx == i && (target[id].measurements > SAMPLES || runMode == RUN_MODE_POSITIONER)) {
+		if (id != -1 && target[id].idx == i && (target[id].measurements > SAMPLES || runMode == RUN_MODE_POSITIONER)) {
 			glColor3f(1.0f, 1.0f, 0.0f);
 
 			if (!agreeWithMajority(id))
@@ -186,7 +186,7 @@ bool agreeWithMajority(int id) {
 	int count = 0;
 	for (int i = 0; i < marker_num; i++) {
 		int sid = marker_info[i].id;
-		if (target[sid].idx == i && (target[sid].measurements > SAMPLES || runMode == RUN_MODE_POSITIONER)) {
+		if (sid != -1 && target[sid].idx == i && (target[sid].measurements > SAMPLES || runMode == RUN_MODE_POSITIONER)) {
 			bool ok = true;
 			for (int j = 0; ok && j < 3; j++)
 				if (fabs(target[id].inferred_position[j][3] - target[sid].inferred_position[j][3]) > CLOSE_MAT_THRESHOLD)
