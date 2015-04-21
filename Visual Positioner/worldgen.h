@@ -39,6 +39,8 @@ double POINT_A[3][4] = {	{1,0,0, 0},
 double POINT_B[3][4] = {	{1,0,0, 1},
 							{0,1,0, 0},
 							{0,0,1, 0}	};
+// externals from plumber.h
+extern	void printMatToStream(double mat[3][4], FILE *stream);
 
 // externals from picasso.h
 extern	void draw(ARdouble trans[3][4]);

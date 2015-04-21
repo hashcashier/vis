@@ -36,6 +36,7 @@ void mainLoopTargeter();
 void getResultRaw( ARMarkerInfo *marker_info, double xyz[3][4] , double mxyz[3][4] );
 int inferPosition();
 bool agreeWithMajority(int id);
+bool saneMatrix(double mat[3][4]);
 
 ARMarkerInfo    *marker_info;
 int             marker_num;
@@ -49,6 +50,7 @@ bool marker_comparison(ARMarkerInfo A, ARMarkerInfo B) {
 extern	void	cleanup();
 extern	int		runMode;
 extern	void	updatePosition(double **matrix);
+extern	void	updatePositionS(double matrix[3][4]);
 extern	int     xsize;
 extern	int		ysize;
 extern	ARHandle           *arHandle;

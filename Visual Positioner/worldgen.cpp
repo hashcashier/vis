@@ -78,12 +78,7 @@ void mainLoopWorldGen() {
 
 
 void printMat(double mat[3][4]) {
-	for(int j = 0; j < 3; j++ ) {
-		for(int k = 0; k < 4; k++ )
-			printf("%15.2f", mat[j][k]);
-		printf("\n");
-	}
-	printf("\n\n");
+	printMatToStream(mat, stdout);
 }
 
 

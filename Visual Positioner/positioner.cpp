@@ -22,10 +22,10 @@ int main(int argc, char **argv) {
 		case 'W':
 			runMode = RUN_MODE_NEW_WORLD;
 			break;
-		case 'c':
+/*		case 'c':
 		case 'C':
 			runMode = RUN_MODE_CALIBRATE;
-			break;
+			break;*/
 		default:
 		case 'p':
 		case 'P':
@@ -58,8 +58,8 @@ int main(int argc, char **argv) {
 			argSetDispFunc( mainLoopWorldGen, 1 );
 		} else {
 			// Send a thread off to wait for client
-			thread mario(openPipe);
-			mario.detach();
+			//thread mario(openPipe);
+			//mario.detach();
 			argSetDispFunc( mainLoopTargeter, 1 );
 		}
 
@@ -258,9 +258,18 @@ void cleanup()
     arVideoClose();
 }
 
+
+void updatePositionS(double matrix[3][4]) {
+	fprintf(stderr, "UPDATE\n");
+	for (int i = 0; i < 3; i++)
+		fprintf(stderr, "%7.2f\n", matrix[i][3]);
+	printf("Position Sent to stderr\n");
+}
+
 void updatePosition(double** matrix) {
 	lock_guard<mutex> lk(loc_mtx);
 
+	/*
 	ostringstream oss;
 	for(int i = 0; i < 3; i++) {
 		for(int j = 0; j < 4; j++) {
@@ -273,4 +282,5 @@ void updatePosition(double** matrix) {
 	delete matrix;
 
 	sendMessage(oss.str());
+	*/
 }

@@ -10,6 +10,7 @@ using namespace std;
 mutex	loc_mtx;
 double	loc[3];
 
+void	updatePositionS(double matrix[3][4]);
 void	updatePosition(double **matrix);
 void	init(int argc, char *argv[]);
 void	cleanup();
@@ -63,4 +64,6 @@ extern	void	mainLoopWorldGen();
 extern	void	openPipe();
 extern	void	closePipe();
 extern	void	sendMessage(string message);
+extern	void	printMatToStream(double mat[3][4], FILE *stream);
+
 #endif

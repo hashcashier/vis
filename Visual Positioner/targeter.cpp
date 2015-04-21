@@ -105,6 +105,11 @@ void mainLoopTargeter() {
 
 	int cnt = inferPosition();
 
+	if (cnt) {
+		updatePositionS(trans);
+	}
+	
+	/*
 	if(cnt && connected) {
 		double **tmp = new double*[3];
 		for(int i = 0; i < 3; i++)
@@ -113,6 +118,7 @@ void mainLoopTargeter() {
 		thread luigi(updatePosition, tmp);
 		luigi.detach();
 	}
+	*/
 
     argSwapBuffers();
 }
@@ -130,6 +136,9 @@ int inferPosition() {
 			glColor3f(1.0f, 1.0f, 0.0f);
 
 			if (!agreeWithMajority(id))
+				continue;
+
+			if (!saneMatrix(target[id].inferred_position) || !saneMatrix(target[id].marker_trans_inv))
 				continue;
 
 			if (!transformAverageAdd(target[id].inferred_position, position, quaternion_rot))
@@ -196,4 +205,12 @@ bool agreeWithMajority(int id) {
 	}
 	printf("%d agrees with %d out of %d.\n", id, count, recognized_targets);
 	return 2 * count >= recognized_targets;
+}
+
+bool saneMatrix(double mat[3][4]) {
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 4; j++)
+			if (fabs(mat[i][j]) > 1e6)
+				return false;
+	return true;
 }

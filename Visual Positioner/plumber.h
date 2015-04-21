@@ -15,4 +15,8 @@ DWORD	numBytesWritten;
 void openPipe();
 void closePipe();
 void sendMessage(string message);
+void printMatToStream(double mat[3][4], FILE *stream);
+
+// externals from targeter
+extern	bool saneMatrix(double mat[3][4]);
 #endif
