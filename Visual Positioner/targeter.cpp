@@ -95,7 +95,7 @@ int detectMarkers() {
 
 void mainLoopTargeter() {
 	int result = detectMarkers();
-	if(result == -1) {
+	if (result == -1) {
 		arUtilSleep(2);
 		return;
 	} else if(result == 0) {
@@ -105,9 +105,11 @@ void mainLoopTargeter() {
 
 	int cnt = inferPosition();
 
+	/*
 	if (cnt) {
 		updatePositionS(trans);
 	}
+	*/
 	
 	/*
 	if(cnt && connected) {
@@ -119,6 +121,7 @@ void mainLoopTargeter() {
 		luigi.detach();
 	}
 	*/
+
 
     argSwapBuffers();
 }
@@ -160,10 +163,12 @@ int inferPosition() {
 	if(cnt) {
 		transformAverageNormalize(inferred, position, quaternion_rot, cnt);
 
-		memcpy(trans, inferred, sizeof inferred);
 		if(runMode == RUN_MODE_POSITIONER)
 			printf("%d Markers Say:\n", cnt),
-			printMat(trans);
+			printMat(inferred);
+
+		lock_guard<mutex> lk(loc_mtx);
+		memcpy(trans, inferred, sizeof inferred);
 	}
 
 	return cnt;

@@ -31,10 +31,12 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="ARToolKit5VC12 Debug.props" />
+    <Import Project="WinSock2x32.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="ARToolKit5VC12 Release.props" />
+    <Import Project="WinSock2x32.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -76,6 +78,7 @@
     <ClCompile Include="picasso.cpp" />
     <ClCompile Include="plumber.cpp" />
     <ClCompile Include="positioner.cpp" />
+    <ClCompile Include="socketeer.cpp" />
     <ClCompile Include="targeter.cpp" />
     <ClCompile Include="worldgen.cpp" />
   </ItemGroup>
@@ -84,6 +87,7 @@
     <ClInclude Include="picasso.h" />
     <ClInclude Include="plumber.h" />
     <ClInclude Include="positioner.h" />
+    <ClInclude Include="socketeer.h" />
     <ClInclude Include="targeter.h" />
     <ClInclude Include="worldgen.h" />
   </ItemGroup>

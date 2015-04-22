@@ -76,4 +76,7 @@ extern	BOOL connected;
 // externals from picasso.h
 extern	void draw(ARdouble trans[3][4]);
 
+// externals from positioner.h
+extern	mutex	loc_mtx;
+
 #endif

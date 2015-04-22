@@ -30,6 +30,9 @@
     <ClCompile Include="picasso.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="socketeer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="picasso.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="socketeer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

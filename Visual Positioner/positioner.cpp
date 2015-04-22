@@ -60,6 +60,11 @@ int main(int argc, char **argv) {
 			// Send a thread off to wait for client
 			//thread mario(openPipe);
 			//mario.detach();
+
+			// Open UDP Socket
+			initSocketServer();
+			thread udpServer(socketServerMainLoop);
+			udpServer.detach();
 			argSetDispFunc( mainLoopTargeter, 1 );
 		}
 
@@ -256,31 +261,4 @@ void cleanup()
 	arDeleteHandle(arHandle);
     arParamLTFree(&gCparamLT);
     arVideoClose();
-}
-
-
-void updatePositionS(double matrix[3][4]) {
-	fprintf(stderr, "UPDATE\n");
-	for (int i = 0; i < 3; i++)
-		fprintf(stderr, "%7.2f\n", matrix[i][3]);
-	printf("Position Sent to stderr\n");
-}
-
-void updatePosition(double** matrix) {
-	lock_guard<mutex> lk(loc_mtx);
-
-	/*
-	ostringstream oss;
-	for(int i = 0; i < 3; i++) {
-		for(int j = 0; j < 4; j++) {
-			if(j) oss << '\t';
-			oss << matrix[i][j];
-		}
-		delete matrix[i];
-		oss << endl;
-	}
-	delete matrix;
-
-	sendMessage(oss.str());
-	*/
 }

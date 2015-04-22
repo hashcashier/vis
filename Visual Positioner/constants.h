@@ -34,6 +34,8 @@
 //#include <AR/param.h>
 /* OpenCV */
 #include <opencv/cv.h>
+/* Windows Sockets */
+#include <winsock.h>
 
 using namespace std;
 
@@ -61,6 +63,8 @@ using namespace std;
 
 #define	CPARA_NAME	"Data/camera_para.dat"
 #define VPARA_NAME  "Data/cameraSetting-%08x%08x.dat"
+
+#define BUFFER_SIZE 1024
 
 
 struct marker {

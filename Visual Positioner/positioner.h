@@ -10,8 +10,6 @@ using namespace std;
 mutex	loc_mtx;
 double	loc[3];
 
-void	updatePositionS(double matrix[3][4]);
-void	updatePosition(double **matrix);
 void	init(int argc, char *argv[]);
 void	cleanup();
 void	keyFunc( unsigned char key, int x, int y );
@@ -65,5 +63,10 @@ extern	void	openPipe();
 extern	void	closePipe();
 extern	void	sendMessage(string message);
 extern	void	printMatToStream(double mat[3][4], FILE *stream);
+
+// externals from socketeer.h
+extern	void	initSocketServer();
+extern	void	socketServerMainLoop();
+
 
 #endif
