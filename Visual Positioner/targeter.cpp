@@ -19,7 +19,7 @@ void loadConfig() {
 
 		target[i].filter = arFilterTransMatInit(AR_FILTER_TRANS_MAT_SAMPLE_RATE_DEFAULT, AR_FILTER_TRANS_MAT_CUTOFF_FREQ_DEFAULT);
 	}
-	transFilter = arFilterTransMatInit(AR_FILTER_TRANS_MAT_SAMPLE_RATE_DEFAULT, AR_FILTER_TRANS_MAT_CUTOFF_FREQ_DEFAULT);
+	transFilter = arFilterTransMatInit(AR_FILTER_TRANS_MAT_SAMPLE_RATE_DEFAULT, AR_FILTER_TRANS_MAT_CUTOFF_FREQ_DEFAULT/3);
 	target[0].measurements = SAMPLES + 1;
 }
 
@@ -153,12 +153,14 @@ int inferPosition() {
 			if (!transformAverageAdd(target[id].inferred_position, position, quaternion_rot))
 				continue;
 
+			/*
 			if(runMode == RUN_MODE_POSITIONER) {
 				printf("%d (%f) Says:\n", id, marker_info[i].cf),
 				printMat(target[id].transformation);
 				printMat(target[id].marker_trans_inv);
 				printMat(target[id].inferred_position);
 			}
+			*/
 
 			cnt++;
 			glColor3f(0.0f, 1.0f, 0.0f);
@@ -195,9 +197,10 @@ void getResultRaw( ARMarkerInfo *marker_info, double xyz[3][4] , double mxyz[3][
 		target[id].error = arGetTransMatSquare(ar3DHandle, marker_info, target[id].width, xyz);
 	target[id].valid = true;
 
-	if (target[id].filter)
+	/*if (target[id].filter)
 		if (arFilterTransMat(target[id].filter, target[id].marker_trans, !target[id].validPrev) < 0)
 			ARLOGe("arFilterTransMat error with marker %d.\n", id);
+			*/
 
     if( arUtilMatInv(xyz, mxyz) < 0 ) return;
 
@@ -220,9 +223,11 @@ bool agreeWithMajority(int id) {
 		}
 	}
 	int agreeWith = runMode == RUN_MODE_POSITIONER ? recognized_targets : measured_recognized_num;
+	/*
 	if (runMode == RUN_MODE_POSITIONER) {
 		printf("%d agrees with %d out of %d.\n", id, count, recognized_targets);
 	}
+	*/
 	return 2 * count >= agreeWith;
 }
 
