@@ -71,12 +71,15 @@ extern	void transformSmooth(	double destination[TRANS_MAT_ROWS][TRANS_MAT_COLS],
 								double A[TRANS_MAT_ROWS][TRANS_MAT_COLS],
 								double B[TRANS_MAT_ROWS][TRANS_MAT_COLS],
 								double factor);
+extern	int	measured_num;
+extern	int	measured_recognized_num;
 
 // externals from plumber.h
 extern	BOOL connected;
 
 // externals from picasso.h
 extern	void draw(ARdouble trans[3][4]);
+extern	void showId(marker &mark);
 
 // externals from positioner.h
 extern	mutex	loc_mtx;

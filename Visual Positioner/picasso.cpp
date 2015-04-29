@@ -10,12 +10,13 @@ void draw(ARdouble trans[3][4])
 	GLfloat   light_ambi[] = { 0.1f, 0.1f, 0.1f, 0.0f };
 	GLfloat   light_color[] = { 1.0f, 1.0f, 1.0f, 0.0f };
 
+	glPushMatrix();
+
 	argDrawMode3D(vp);
 	glClearDepth(1.0);
 	glClear(GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
-
 	/* load the camera transformation matrix */
 	argConvGlpara(trans, gl_para);
 	glMatrixMode(GL_MODELVIEW);
@@ -49,4 +50,41 @@ void draw(ARdouble trans[3][4])
 	glDisable(GL_LIGHTING);
 
 	glDisable(GL_DEPTH_TEST);
+
+	argDrawMode2D(vp);
+	glPopMatrix();
+}
+
+
+void showId(marker &mark) {
+	ARdouble  gl_para[16];
+
+	glPushMatrix();
+	argDrawMode3D(vp);
+
+	glClearDepth(1.0);
+	glClear(GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
+	/* load the camera transformation matrix */
+	argConvGlpara(mark.marker_trans, gl_para);
+	glMatrixMode(GL_MODELVIEW);
+#ifdef ARDOUBLE_IS_FLOAT
+	glLoadMatrixf(gl_para);
+#else
+	glLoadMatrixd(gl_para);
+#endif
+
+	char tmp[256];
+	sprintf(tmp, "%d,%d", mark.id, mark.idx);
+	if (mark.measurements > SAMPLES || runMode == RUN_MODE_POSITIONER)
+		glColor3f(0.0f, 1.0f, 0.0f);
+	else
+		glColor3f(0.0f, 1.0f, 1.0f);
+	argDrawStringsByIdealPos(tmp, 0, 0);
+
+	glDisable(GL_DEPTH_TEST);
+
+	argDrawMode2D(vp);
+	glPopMatrix();
 }

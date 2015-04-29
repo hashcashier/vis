@@ -59,14 +59,6 @@ int detectMarkers() {
         exit(0);
     }
 
-    if( count_ar % 60 == 0 ) {
-        sprintf(fps, "%f[fps]", 60.0/arUtilTimer());
-        arUtilTimerReset();
-    }
-    count_ar++;
-    glColor3f(0.0f, 1.0f, 0.0f);
-    argDrawStringsByIdealPos(fps, 10, ysize-30);
-
     marker_num = arGetMarkerNum( arHandle );
     if( !marker_num ) {
         return 0;
@@ -81,15 +73,28 @@ int detectMarkers() {
 		target[i].idx = -1;
 
 	recognized_targets = 0;
+	measured_recognized_num = 0;
 	sort(marker_info, marker_info + marker_num, marker_comparison);
 	for (int i = 0; i < marker_num; i++) {
 		int id = marker_info[i].id;
-		if (marker_info[i].cf > 0.7 && target_set.count(id) && target[id].idx == -1) {
+		if (marker_info[i].cf > CONFIDENCE_THRESHOLD && target_set.count(id) && target[id].idx == -1) {
 			target[id].idx = i;
+			showId(target[id]);
 			recognized_targets++;
+			if (target[id].measurements > SAMPLES)
+				measured_recognized_num++;
 			getResultRaw(&marker_info[i], target[id].marker_trans, target[id].marker_trans_inv);
 		}
 	}
+
+	// HUD info
+	if (count_ar % 60 == 0) {
+		sprintf(fps, "%f[fps] %d/%d markers", 60.0 / arUtilTimer(), recognized_targets, marker_num);
+		arUtilTimerReset();
+	}
+	count_ar++;
+	glColor3f(0.0f, 1.0f, 0.0f);
+	argDrawStringsByIdealPos(fps, 10, ysize - 30);
 
 	return marker_num;
 }
@@ -154,6 +159,7 @@ int inferPosition() {
 				printMat(target[id].marker_trans_inv);
 				printMat(target[id].inferred_position);
 			}
+
 			cnt++;
 			glColor3f(0.0f, 1.0f, 0.0f);
 			draw(target[id].marker_trans);
@@ -213,9 +219,11 @@ bool agreeWithMajority(int id) {
 			count += ok;
 		}
 	}
-	if (runMode == RUN_MODE_POSITIONER)
+	int agreeWith = runMode == RUN_MODE_POSITIONER ? recognized_targets : measured_recognized_num;
+	if (runMode == RUN_MODE_POSITIONER) {
 		printf("%d agrees with %d out of %d.\n", id, count, recognized_targets);
-	return 2 * count >= recognized_targets;
+	}
+	return 2 * count >= agreeWith;
 }
 
 bool saneMatrix(double mat[3][4]) {

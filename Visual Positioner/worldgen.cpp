@@ -11,7 +11,7 @@ void mainLoopWorldGen() {
 	}
 
 
-	int located_markers = inferPosition();
+	int located_markers = inferPosition(), failures = 0;
 
 	if(located_markers)
 		for(int i = 0; i < marker_num; i++) {
@@ -26,6 +26,7 @@ void mainLoopWorldGen() {
 
 				if(measurements < SAMPLES) {
 					glColor3f( 1.0, 1.0, 0.0 );
+					failures++;
 					
 					int cnt = 0;
 					for (int j = 0; j < marker_num; j++) {
@@ -48,6 +49,7 @@ void mainLoopWorldGen() {
 					}
 					if(!cnt)
 						continue;
+					failures--;
 					transformAverageNormalize(transformation, p, q, cnt);
 
 					transformAverageAdd(transformation, target[id].position, target[id].quaternion_rot);
@@ -69,6 +71,15 @@ void mainLoopWorldGen() {
 				//argDrawSquare(marker_info[i].vertex,0,0);
 			}
 		}
+
+	char tmp[256];
+	sprintf(tmp, "Known: %d", located_markers);
+	glColor3f(0.0f, 0.0f, 1.0f);
+	argDrawStringsByIdealPos(tmp, 10, 20);
+	sprintf(tmp, "Failures: %d", failures);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	argDrawStringsByIdealPos(tmp, 10, 50);
+
 
 	if(targets == measured_num)
 		outputAndDie();

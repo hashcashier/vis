@@ -51,6 +51,8 @@ using namespace std;
 #define QUAT_DIMS	4
 #define	POS_DIMS	3
 
+#define CONFIDENCE_THRESHOLD 0.5
+
 #define MOVEMENT_THRESHOLD	100
 #define MOVEMENT_FACTOR		0.05
 

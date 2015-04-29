@@ -27,6 +27,7 @@ extern int detectMarkers();
 
 // Local variables
 int	measured_num = 1;
+int	measured_recognized_num = 1;
 
 double POINT_O[3][4] = {	{1,0,0, 0},
 							{0,1,0, 0},
