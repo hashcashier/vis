@@ -15,8 +15,10 @@ char			*vconf = "Data\\WDM_camera_flipV.xml";
 char			*vconf = "";
 #endif
 
-double			pos[3];// = {0, 0 ,0};
-double			trans[3][4];
+double					pos[3];// = {0, 0 ,0};
+double					trans[3][4];
+ARFilterTransMatInfo	*transFilter;
+bool					transValid;
 
 int				targets, recognized_targets;
 marker			*target;

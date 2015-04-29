@@ -19,6 +19,7 @@ void loadConfig() {
 
 		target[i].filter = arFilterTransMatInit(AR_FILTER_TRANS_MAT_SAMPLE_RATE_DEFAULT, AR_FILTER_TRANS_MAT_CUTOFF_FREQ_DEFAULT);
 	}
+	transFilter = arFilterTransMatInit(AR_FILTER_TRANS_MAT_SAMPLE_RATE_DEFAULT, AR_FILTER_TRANS_MAT_CUTOFF_FREQ_DEFAULT);
 	target[0].measurements = SAMPLES + 1;
 }
 
@@ -155,8 +156,8 @@ int inferPosition() {
 			}
 			cnt++;
 			glColor3f(0.0f, 1.0f, 0.0f);
+			draw(target[id].marker_trans);
 		}
-		draw(target[id].marker_trans);
 	}
 
 	double inferred[3][4];
@@ -169,6 +170,10 @@ int inferPosition() {
 
 		lock_guard<mutex> lk(loc_mtx);
 		memcpy(trans, inferred, sizeof inferred);
+
+		if (arFilterTransMat(transFilter, trans, !transValid) < 0)
+			ARLOGe("arFilterTransMat error with camera transform.\n");
+		transValid = true;
 	}
 
 	return cnt;
@@ -208,7 +213,8 @@ bool agreeWithMajority(int id) {
 			count += ok;
 		}
 	}
-	printf("%d agrees with %d out of %d.\n", id, count, recognized_targets);
+	if (runMode == RUN_MODE_POSITIONER)
+		printf("%d agrees with %d out of %d.\n", id, count, recognized_targets);
 	return 2 * count >= recognized_targets;
 }
 

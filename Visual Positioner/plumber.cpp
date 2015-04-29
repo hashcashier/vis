@@ -53,7 +53,7 @@ void printMatToStream(double mat[3][4], FILE *stream) {
 
 	for (int j = 0; j < 3; j++) {
 		for (int k = 0; k < 4; k++)
-			fprintf(stream, "%7.2f\t", mat[j][k]);
+			fprintf(stream, "%11.2f\t", mat[j][k]);
 		fprintf(stream, "\n");
 	}
 	fprintf(stream, "\n\n");

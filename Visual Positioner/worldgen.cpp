@@ -31,7 +31,7 @@ void mainLoopWorldGen() {
 					for (int j = 0; j < marker_num; j++) {
 						int sid = marker_info[j].id;
 
-						if(target[sid].idx != j || i == j || sid)
+						if(sid == -1 || target[sid].idx != j || i == j || target[sid].measurements <= SAMPLES)
 							continue;
 
 						if (!parallelPlanes(target[sid].marker_trans, target[id].marker_trans))
