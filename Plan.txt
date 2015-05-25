@@ -1,6 +1,6 @@
 Shape Changing Walls:
 	Wobbling Walls
-	Protruding Surfaces (Sphere, Cube, Pixels)
+	Protruding Surfaces (Sphere, Pixels)
 	Guiding Elements (Arrows, Lines)
 Interactive Environments:
 	Rotating Platform

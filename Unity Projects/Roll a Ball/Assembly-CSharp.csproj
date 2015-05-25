@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\MarkerGPSSocketClient.cs" />
      <Compile Include="Assets\Scripts\OneAxisFollow.cs" />
+     <Compile Include="Assets\Scripts\Oscillate.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Rotator.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
