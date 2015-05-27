@@ -1,0 +1,143 @@
+﻿Build started 4/29/2015 4:15:30 PM.
+     1>Project "C:\Users\Rami\Desktop\vis\Visual Positioner\Marker GPS.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         G:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\ARToolKit5VC12\include\win32-i386" /IC:\ARToolKit5\include /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D __STDC_LIMIT_MACROS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt picasso.cpp plumber.cpp positioner.cpp socketeer.cpp targeter.cpp worldgen.cpp
+         worldgen.cpp
+         targeter.cpp
+         socketeer.cpp
+         positioner.cpp
+         plumber.cpp
+         picasso.cpp
+         Generating Code...
+       Link:
+         G:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\Marker GPS.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\ARToolKit5VC12\lib\win32-i386" /LIBPATH:C:\ARToolKit5\lib ws2_32.lib ARd.lib ARICPd.lib ARgsubd.lib ARvideod.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\Marker GPS.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\Marker GPS.lib" /MACHINE:X86 Debug\picasso.obj
+         Debug\plumber.obj
+         Debug\positioner.obj
+         Debug\socketeer.obj
+         Debug\targeter.obj
+         Debug\worldgen.obj
+     1>ARd.lib(ar3DCreateHandle.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arCreateHandle.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arDetectMarker.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arDetectMarker2.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arFilterTransMat.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arGetLine.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arGetMarkerInfo.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arGetTransMat.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arImageProc.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabeling.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBI3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBI3C565.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBI3CA.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBI3CA4444.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBI3CA5551.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBIA3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBIC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBICY.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBIYC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBR3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBR3C565.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBR3CA.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBR3CA4444.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBR3CA5551.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBRA3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBRC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBRCY.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBRYC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDBZ.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWI3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWI3C565.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWI3CA.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWI3CA4444.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWI3CA5551.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWIA3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWIC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWICY.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWIYC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWR3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWR3C565.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWR3CA.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWR3CA4444.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWR3CA5551.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWRA3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWRC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWRCY.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWRYC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubDWZ.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBI3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBI3C565.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBI3CA.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBI3CA4444.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBI3CA5551.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBIA3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBIC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBICY.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBIYC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBR3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBR3C565.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBR3CA.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBR3CA4444.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBR3CA5551.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBRA3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBRC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBRCY.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBRYC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEBZ.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWI3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWI3C565.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWI3CA.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWI3CA4444.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWI3CA5551.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWIA3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWIC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWICY.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWIYC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWR3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWR3C565.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWR3CA.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWR3CA4444.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWR3CA5551.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWRA3C.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWRC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWRCY.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWRYC.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arLabelingSubEWZ.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arPattAttach.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arPattCreateHandle.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arPattGetID.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arPattLoad.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(arUtil.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(mAlloc.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(mAllocDup.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(mAllocMul.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(mAllocTrans.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(mDup.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(mFree.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(mMul.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(mPCA.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(mSelfInv.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(mTrans.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(paramChangeSize.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(paramClear.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(paramDecomp.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(paramDisp.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(paramDistortion.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(paramFile.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(paramLT.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(vAlloc.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(vFree.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(vHouse.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(vInnerP.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARd.lib(vTridiag.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARgsubd.lib(argBase.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARgsubd.lib(argDraw.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARgsubd.lib(argDrawImage.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARgsubd.lib(argDrawMode.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARgsubd.lib(argFunction.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ARgsubd.lib(argWindow.obj) : warning LNK4204: 'C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+         Marker GPS.vcxproj -> C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\Marker GPS.exe
+     1>Done Building Project "C:\Users\Rami\Desktop\vis\Visual Positioner\Marker GPS.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:19.18
