@@ -1,18 +1,18 @@
-﻿Build started 6/3/2015 9:53:41 PM.
-     1>Project "C:\Users\Admin_2\Rami\Visual Positioner\Marker GPS.vcxproj" on node 2 (Build target(s)).
+﻿Build started 6/4/2015 12:41:15 AM.
+     1>Project "C:\Users\Rami\Desktop\vis\Visual Positioner\Marker GPS.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\ARToolKit5\include\win32-i386" /IC:\ARToolKit5\include /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D __STDC_LIMIT_MACROS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt targeter.cpp
+         G:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\ARToolKit5\include\win32-i386" /IC:\ARToolKit5\include /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D __STDC_LIMIT_MACROS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt targeter.cpp
          targeter.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\ARToolKit5\lib\win32-i386" /LIBPATH:C:\ARToolKit5\lib ws2_32.lib ARd.lib ARICPd.lib ARgsubd.lib ARvideod.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.lib" /MACHINE:X86 Debug\picasso.obj
+         G:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\Marker GPS.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\ARToolKit5\lib\win32-i386" /LIBPATH:C:\ARToolKit5\lib ws2_32.lib ARd.lib ARICPd.lib ARgsubd.lib ARvideod.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\Marker GPS.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\Marker GPS.lib" /MACHINE:X86 Debug\picasso.obj
          Debug\plumber.obj
          Debug\positioner.obj
          Debug\socketeer.obj
          Debug\targeter.obj
          Debug\worldgen.obj
-         Marker GPS.vcxproj -> C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.exe
-     1>Done Building Project "C:\Users\Admin_2\Rami\Visual Positioner\Marker GPS.vcxproj" (Build target(s)).
+         Marker GPS.vcxproj -> C:\Users\Rami\Desktop\vis\Visual Positioner\Debug\Marker GPS.exe
+     1>Done Building Project "C:\Users\Rami\Desktop\vis\Visual Positioner\Marker GPS.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:14.60
+Time Elapsed 00:00:03.38

@@ -83,9 +83,11 @@ int detectMarkers() {
 			recognized_targets++;
 			if (target[id].measurements > SAMPLES)
 				measured_recognized_num++;
+			//cout << "SEE " << id << endl;
 			getResultRaw(&marker_info[i], target[id].marker_trans, target[id].marker_trans_inv);
 		}
 	}
+	//cout << "---" << endl;
 
 	// HUD info
 	if (count_ar % 60 == 0) {
@@ -188,17 +190,24 @@ int inferPosition() {
 		double conf = 0; int mostConf = -1;
 		for (int i = 0; i < marker_num; i++) {
 			int id = marker_info[i].id;
-			if (id != -1 && target[id].idx == i && target[id].marker_info->cf > conf)
+			if (id != -1 && target[id].idx == i && marker_info[i].cf > conf)
 				if (saneMatrix(target[id].inferred_position) && saneMatrix(target[id].marker_trans_inv))
-					conf = target[id].marker_info->cf, mostConf = id;
+					conf = marker_info[i].cf, mostConf = id;
+//				else
+//					cout << "Could only get insane matrix from " << id << endl;
 		}
 
 		if (mostConf != -1) {
+//			cout << "Taking what i can get! " << mostConf << endl;
 			lock_guard<mutex> lk(loc_mtx);
-			memcpy(trans, target[mostConf].inferred_position, sizeof inferred);
+			memcpy(trans, target[mostConf].inferred_position, sizeof trans);
 
 			if (arFilterTransMat(transFilter, trans, !transValid) < 0)
 				ARLOGe("arFilterTransMat error with camera transform.\n");
+
+			glColor3f(.7f, .7f, .1f);
+			draw(target[mostConf].marker_trans);
+
 			transValid = true;
 		}
 	}
@@ -247,6 +256,8 @@ bool agreeWithMajority(int id) {
 		printf("%d agrees with %d out of %d.\n", id, count, recognized_targets);
 	}
 	*/
+
+	//cout << id << " Agrees with " << count << " out of " << agreeWith << endl;
 	return 2 * count >= agreeWith;
 }
 
