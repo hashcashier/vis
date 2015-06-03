@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
 		argc -= 1;
 		argv += strlen(argv[0]) + 1;
 	} else {
-		cout << "Select run-mode! (P)ositioner/(W)orld Generator/(C)alibration" << endl;
+		cout << "Select run-mode! (P)ositioner/(W)orld Generator" << endl;
 		cin >> mode;
 	}
 
