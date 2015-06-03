@@ -33,47 +33,30 @@ int main(int argc, char **argv) {
 			break;
 	}
 
-	if(runMode == RUN_MODE_CALIBRATE) {
-		/*
-		if(argc) {
-			char *argvRecovered[] = {execPath, argv[0]};
-			return ocv_main(2, argvRecovered);
-		}
+	
+	// Load configuration
+	loadConfig();
+	// Initialize GLUT
+	glutInit(&argcOriginal, argvOriginal);
 
-		cin >> inputResponse;
-		char *argvFake[] = {execPath, (char*) inputResponse.c_str()};
-		return ocv_main(2, argvFake);
-		*/
+	// Initialize Positoner
+	init(argc, argv);
+
+	if(runMode == RUN_MODE_NEW_WORLD) {
+		argSetDispFunc( mainLoopWorldGen, 1 );
 	} else {
-		// Load configuration
-		loadConfig();
-
-		// Initialize GLUT
-		glutInit(&argcOriginal, argvOriginal);
-
-		// Initialize Positoner
-		init(argc, argv);
-
-		if(runMode == RUN_MODE_NEW_WORLD) {
-			argSetDispFunc( mainLoopWorldGen, 1 );
-		} else {
-			// Send a thread off to wait for client
-			//thread mario(openPipe);
-			//mario.detach();
-
-			// Open UDP Socket
-			initSocketServer();
-			thread udpServer(socketServerMainLoop);
-			udpServer.detach();
-			argSetDispFunc( mainLoopTargeter, 1 );
-		}
-
-		argSetKeyFunc( keyFunc );
-		count_ar = 0;
-		fps[0] = '\0';
-		arUtilTimerReset();
-		argMainLoop();
+		// Send a thread off to wait for client
+		initSocketServer();
+		thread udpServer(socketServerMainLoop);
+		udpServer.detach();
+		argSetDispFunc( mainLoopTargeter, 1 );
 	}
+
+	argSetKeyFunc( keyFunc );
+	count_ar = 0;
+	fps[0] = '\0';
+	arUtilTimerReset();
+	argMainLoop();
 
 	return 0;
 }
@@ -209,15 +192,6 @@ void init(int argc, char *argv[]) {
     }
 
     /* open the graphics window */
-/*
-    int winSizeX, winSizeY;
-    argCreateFullWindow();
-    argGetScreenSize( &winSizeX, &winSizeY );
-    viewport.sx = 0;
-    viewport.sy = 0;
-    viewport.xsize = winSizeX;
-    viewport.ysize = winSizeY;
-*/
     viewport.sx = 0;
     viewport.sy = 0;
     viewport.xsize = xsize;

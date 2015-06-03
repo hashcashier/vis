@@ -34,10 +34,12 @@ void sendMessage(string msg) {
 	if (!connected) return;
 	lock_guard<mutex> lk(pipe_mtx);
 	sent = WriteFile(pipe, msg.c_str(), msg.length() * sizeof(char), &numBytesWritten, NULL);
+	/*
 	if(sent)
 		cout << numBytesWritten << " bytes sent out of " << msg.length() * sizeof(char) << '.' << endl;
 	else
 		cout << "Failed to send " << msg.length() * sizeof(char) << " bytes." << endl;
+	*/
 }
 
 void closePipe() {

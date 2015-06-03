@@ -172,9 +172,10 @@ int inferPosition() {
 	if(cnt) {
 		transformAverageNormalize(inferred, position, quaternion_rot, cnt);
 
-		if(runMode == RUN_MODE_POSITIONER)
+		/*if(runMode == RUN_MODE_POSITIONER)
 			printf("%d Markers Say:\n", cnt),
 			printMat(inferred);
+			*/
 
 		lock_guard<mutex> lk(loc_mtx);
 		memcpy(trans, inferred, sizeof inferred);
@@ -182,6 +183,23 @@ int inferPosition() {
 		if (arFilterTransMat(transFilter, trans, !transValid) < 0)
 			ARLOGe("arFilterTransMat error with camera transform.\n");
 		transValid = true;
+	} else if(runMode == RUN_MODE_POSITIONER) {
+		// Take what we can get!
+		double conf = 0; int mostConf = -1;
+		for (int i = 0; i < marker_num; i++) {
+			int id = marker_info[i].id;
+			if (id != -1 && target[id].idx == i && target[id].marker_info->cf > conf)
+				conf = target[id].marker_info->cf, mostConf = id;
+		}
+
+		if (mostConf != -1) {
+			lock_guard<mutex> lk(loc_mtx);
+			memcpy(trans, target[mostConf].inferred_position, sizeof inferred);
+
+			if (arFilterTransMat(transFilter, trans, !transValid) < 0)
+				ARLOGe("arFilterTransMat error with camera transform.\n");
+			transValid = true;
+		}
 	}
 
 	return cnt;

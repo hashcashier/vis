@@ -52,7 +52,6 @@ bool marker_comparison(ARMarkerInfo A, ARMarkerInfo B) {
 extern	void	cleanup();
 extern	int		runMode;
 extern	void	updatePosition(double **matrix);
-extern	void	updatePositionS(double matrix[3][4]);
 extern	int     xsize;
 extern	int		ysize;
 extern	ARHandle           *arHandle;

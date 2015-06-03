@@ -37,8 +37,12 @@ void initSocketServer() {
 
 void socketServerMainLoop() {
 	while (true) {
-		if (!socketAvailable)
+		if (!socketAvailable) {
+			// Busy wait. Don't hog CPU.
+			this_thread::sleep_for(chrono::milliseconds(100));
 			continue;
+		}
+
 		int client_length = (int)sizeof(struct sockaddr_in);
 
 		int bytes_received = recvfrom(sock, inputBuffer, BUFFER_SIZE, 0, (struct sockaddr *)&client, &client_length);

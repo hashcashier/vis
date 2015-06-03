@@ -43,7 +43,6 @@ using namespace std;
 
 #define RUN_MODE_NEW_WORLD		1
 #define RUN_MODE_POSITIONER		2
-#define	RUN_MODE_CALIBRATE		3
 
 #define TRANS_MAT_ROWS	3
 #define	TRANS_MAT_COLS	4
