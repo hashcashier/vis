@@ -189,7 +189,8 @@ int inferPosition() {
 		for (int i = 0; i < marker_num; i++) {
 			int id = marker_info[i].id;
 			if (id != -1 && target[id].idx == i && target[id].marker_info->cf > conf)
-				conf = target[id].marker_info->cf, mostConf = id;
+				if (saneMatrix(target[id].inferred_position) && saneMatrix(target[id].marker_trans_inv))
+					conf = target[id].marker_info->cf, mostConf = id;
 		}
 
 		if (mostConf != -1) {
