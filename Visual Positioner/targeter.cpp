@@ -83,11 +83,9 @@ int detectMarkers() {
 			recognized_targets++;
 			if (target[id].measurements > SAMPLES)
 				measured_recognized_num++;
-			//cout << "SEE " << id << endl;
 			getResultRaw(&marker_info[i], target[id].marker_trans, target[id].marker_trans_inv);
 		}
 	}
-	//cout << "---" << endl;
 
 	// HUD info
 	if (count_ar % 60 == 0) {
