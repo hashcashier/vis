@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
 
-        rb.AddForce(movement * speed);
+        //rb.AddForce(movement * speed);
+		rb.velocity = movement * speed;
     }
 
     void OnTriggerEnter(Collider other) {
