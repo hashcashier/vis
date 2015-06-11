@@ -263,8 +263,8 @@ int inferPositionFancy() {
 	}
 
 	if (canInfer) {
-		arUtilMatMul(discovery, transition, tmp);
-		arUtilMatMul(target[lastKnown].marker_trans_inv, tmp, inferred);
+		arUtilMatMul(target[lastKnown].marker_trans_inv, discovery, tmp);
+		arUtilMatMul(transition, tmp, inferred);
 		glColor3f(0.0f, 1.0f, 0.0f);
 		draw(target[lastKnown].marker_trans);
 
