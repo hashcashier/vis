@@ -289,10 +289,10 @@ void getResultRaw( ARMarkerInfo *marker_info, double xyz[3][4] , double mxyz[3][
 		target[id].error = arGetTransMatSquare(ar3DHandle, marker_info, target[id].width, xyz);
 	target[id].valid = true;
 
-	/*if (target[id].filter)
+	if (target[id].filter)
 		if (arFilterTransMat(target[id].filter, target[id].marker_trans, !target[id].validPrev) < 0)
 			ARLOGe("arFilterTransMat error with marker %d.\n", id);
-			*/
+			
 
     if( arUtilMatInv(xyz, mxyz) < 0 ) return;
 
