@@ -67,9 +67,9 @@ void socketServerMainLoop() {
 				WSACleanup();
 				return;
 			}
-			else {
+			/*else {
 				fprintf(stderr, "Datagram of %d bytes sent: %s\n", len, outputBuffer);
-			}
+			}*/
 		}
 		else {
 			printf("??\n");

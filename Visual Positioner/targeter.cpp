@@ -243,7 +243,6 @@ int inferPositionFancy() {
 	int lowestAvailable = marker_num, canInfer = false;
 	for (int i = 0; i < marker_num; i++) {
 		int id = marker_info[i].id;
-		glColor3f(1.0f, 0.0f, 0.0f);
 		if (id == -1 || target[id].idx != i) continue;
 		if (!saneMatrix(target[id].marker_trans) || !saneMatrix(target[id].marker_trans_inv)) continue;
 
@@ -266,6 +265,8 @@ int inferPositionFancy() {
 	if (canInfer) {
 		arUtilMatMul(discovery, transition, tmp);
 		arUtilMatMul(target[lastKnown].marker_trans_inv, tmp, inferred);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		draw(target[lastKnown].marker_trans);
 
 		lock_guard<mutex> lk(loc_mtx);
 		memcpy(trans, inferred, sizeof inferred);
