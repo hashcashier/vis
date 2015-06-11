@@ -37,6 +37,7 @@ int detectMarkers();
 void mainLoopTargeter();
 void getResultRaw( ARMarkerInfo *marker_info, double xyz[3][4] , double mxyz[3][4] );
 int inferPosition();
+int inferPositionFancy();
 bool agreeWithMajority(int id);
 bool saneMatrix(double mat[3][4]);
 

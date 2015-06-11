@@ -109,7 +109,8 @@ void mainLoopTargeter() {
 		return;
 	}
 
-	int cnt = inferPosition();
+	//int cnt = inferPosition();
+	int cnt = inferPositionFancy();
 
 	/*
 	if (cnt) {
@@ -211,6 +212,70 @@ int inferPosition() {
 	}
 
 	return cnt;
+}
+
+void idTrans(ARdouble trans[3][4]) {
+	for (int i = 0; i < 3; i++) for (int j = 0; j < 4; j++)
+		trans[i][j] = i == j ? 1.0 : 0.0;
+}
+
+int inferPositionFancy() {
+	ARdouble inferred[3][4], tmp[3][4];
+	static ARdouble discovery[3][4], transition[3][4];
+	static int lastKnown;
+
+	/*ARdouble testA[3][4], testB[3][4];
+	idTrans(testA);
+	idTrans(testB);
+	testB[1][3] = 5;
+	arUtilMatMul(testB, testA, tmp);
+	printMat(testB);
+	printMat(testA);
+	printMat(tmp);
+	cout << "====================" << endl;*/
+
+	if (!transValid) {
+		lastKnown = 0;
+		idTrans(discovery);
+		idTrans(transition);
+	}
+
+	int lowestAvailable = marker_num, canInfer = false;
+	for (int i = 0; i < marker_num; i++) {
+		int id = marker_info[i].id;
+		glColor3f(1.0f, 0.0f, 0.0f);
+		if (id == -1 || target[id].idx != i) continue;
+		if (!saneMatrix(target[id].marker_trans) || !saneMatrix(target[id].marker_trans_inv)) continue;
+
+		if (id == lastKnown) canInfer = true;
+		lowestAvailable = min(lowestAvailable, id);
+	}
+
+	if (lowestAvailable == 0) {
+		idTrans(discovery);
+		idTrans(transition);
+		lastKnown = 0;
+		canInfer = true;
+	} else if (!canInfer && lowestAvailable != marker_num) {
+		memcpy(transition, trans, sizeof transition);
+		memcpy(discovery, target[lowestAvailable].marker_trans, sizeof discovery);
+		lastKnown = lowestAvailable;
+		canInfer = true;
+	}
+
+	if (canInfer) {
+		arUtilMatMul(discovery, transition, tmp);
+		arUtilMatMul(target[lastKnown].marker_trans_inv, tmp, inferred);
+
+		lock_guard<mutex> lk(loc_mtx);
+		memcpy(trans, inferred, sizeof inferred);
+
+		if (arFilterTransMat(transFilter, trans, !transValid) < 0)
+			ARLOGe("arFilterTransMat error with camera transform.\n");
+		transValid = true;
+	}
+
+	return canInfer;
 }
 
 void getResultRaw( ARMarkerInfo *marker_info, double xyz[3][4] , double mxyz[3][4] )
