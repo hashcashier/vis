@@ -336,7 +336,7 @@ bool saneMatrix(double mat[3][4]) {
 
 void applyTrans(double next[3][4]) {
 	lock_guard<mutex> lk(loc_mtx);
-	memcpy(trans, next, sizeof next);
+	memcpy(trans, next, sizeof trans);
 
 	if (arFilterTransMat(transFilter, trans, !transValid) < 0)
 		ARLOGe("arFilterTransMat error with camera transform.\n");
