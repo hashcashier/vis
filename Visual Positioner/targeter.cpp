@@ -279,7 +279,7 @@ int inferPositionFancy() {
 		cerr << lastKnown << endl;
 	}
 	else {
-		cerr << "NONE!" << endl;
+		cerr << "NONE! " << lowestAvailable << ' ' << marker_num << endl;
 	}
 
 	return canInfer;
