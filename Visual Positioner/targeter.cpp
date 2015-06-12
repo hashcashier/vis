@@ -112,8 +112,8 @@ void mainLoopTargeter() {
 		return;
 	}
 
-	//int cnt = inferPosition();
-	int cnt = inferPositionFancy();
+	int cnt = inferPosition();
+	//int cnt = inferPositionFancy();
 
 	/*
 	if (cnt) {
