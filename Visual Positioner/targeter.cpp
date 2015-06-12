@@ -275,6 +275,11 @@ int inferPositionFancy() {
 		glColor3f(0.0f, 1.0f, 0.0f);
 		draw(target[lastKnown].marker_trans);
 		applyTrans(target[lastKnown].inferred_position);
+
+		cerr << lastKnown << endl;
+	}
+	else {
+		cerr << "NONE!" << endl;
 	}
 
 	return canInfer;
