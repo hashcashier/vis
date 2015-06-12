@@ -230,13 +230,13 @@ int inferPositionFancy() {
 		//idTrans(transition);
 	}
 
-	int lowestAvailable = marker_num, canInfer = false;
+	int lowestAvailable = targets, canInfer = false;
 	for (int i = 0; i < marker_num; i++) {
 		int id = marker_info[i].id;
-		cerr << "-----------------" << endl;
+		/*cerr << "-----------------" << endl;
 		cerr << i << ' ' << id << ' ' << target[id].idx << endl;
 		cerr << saneMatrix(target[id].marker_trans) << ' ' << saneMatrix(target[id].marker_trans_inv) << endl;
-		cerr << "-----------------" << endl;
+		cerr << "-----------------" << endl;*/
 		if (id == -1 || target[id].idx != i) continue;
 		if (!saneMatrix(target[id].marker_trans) || !saneMatrix(target[id].marker_trans_inv)) continue;
 		//if (id != 0 && !target[id].viable) continue;
@@ -265,7 +265,7 @@ int inferPositionFancy() {
 		//idTrans(transition);
 		lastKnown = 0;
 		canInfer = true;
-	} else if (!canInfer && lowestAvailable != marker_num) {
+	} else if (!canInfer && lowestAvailable != targets) {
 		/*memcpy(transition, trans, sizeof transition);
 		memcpy(discovery, target[lowestAvailable].marker_trans, sizeof discovery);*/
 		lastKnown = lowestAvailable;
@@ -280,10 +280,10 @@ int inferPositionFancy() {
 		draw(target[lastKnown].marker_trans);
 		applyTrans(target[lastKnown].inferred_position);
 
-		cerr << lastKnown << endl;
+		//cerr << lastKnown << endl;
 	}
 	else {
-		cerr << "NONE! " << lowestAvailable << ' ' << marker_num << endl;
+		//cerr << "NONE! " << lowestAvailable << ' ' << marker_num << endl;
 	}
 
 	return canInfer;
