@@ -47,7 +47,7 @@ void socketServerMainLoop() {
 
 		int bytes_received = recvfrom(sock, inputBuffer, BUFFER_SIZE, 0, (struct sockaddr *)&client, &client_length);
 
-		//printf("%d bytes received in UDP Buffer.\n", bytes_received);
+		printf("%d bytes received in UDP Buffer.\n", bytes_received);
 
 		if (bytes_received < 0) {
 			fprintf(stderr, "Could not receive datagram.\n");
@@ -67,9 +67,9 @@ void socketServerMainLoop() {
 				WSACleanup();
 				return;
 			}
-			/*else {
+			else {
 				fprintf(stderr, "Datagram of %d bytes sent: %s\n", len, outputBuffer);
-			}*/
+			}
 		}
 		else {
 			printf("??\n");
