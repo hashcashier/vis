@@ -40,6 +40,7 @@ int inferPosition();
 int inferPositionFancy();
 bool agreeWithMajority(int id);
 bool saneMatrix(double mat[3][4]);
+void applyTrans(double next[3][4]);
 
 ARMarkerInfo    *marker_info;
 int             marker_num;

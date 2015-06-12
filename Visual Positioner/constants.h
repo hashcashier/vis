@@ -69,7 +69,7 @@ using namespace std;
 
 
 struct marker {
-	bool					valid, validPrev;
+	bool					valid, validPrev, viable;
 	int						id, idx;
 	int						measurements;
 	double					transformation[TRANS_MAT_ROWS][TRANS_MAT_COLS];
@@ -85,6 +85,8 @@ struct marker {
 	ARFilterTransMatInfo	*filter;
 	double					marker_trans[TRANS_MAT_ROWS][TRANS_MAT_COLS];
 	double					marker_trans_inv[TRANS_MAT_ROWS][TRANS_MAT_COLS];
+	double					trick_adjustment[TRANS_MAT_ROWS][TRANS_MAT_COLS];
+	ARFilterTransMatInfo	*trick_adjustment_filter;
 };
 
 

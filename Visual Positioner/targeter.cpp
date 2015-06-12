@@ -18,6 +18,9 @@ void loadConfig() {
 			target[i].position[j] = 0;
 
 		target[i].filter = arFilterTransMatInit(AR_FILTER_TRANS_MAT_SAMPLE_RATE_DEFAULT, AR_FILTER_TRANS_MAT_CUTOFF_FREQ_DEFAULT);
+		
+		target[i].trick_adjustment_filter = arFilterTransMatInit(AR_FILTER_TRANS_MAT_SAMPLE_RATE_DEFAULT, AR_FILTER_TRANS_MAT_CUTOFF_FREQ_DEFAULT);
+		target[i].viable = false;
 	}
 	transFilter = arFilterTransMatInit(AR_FILTER_TRANS_MAT_SAMPLE_RATE_DEFAULT, AR_FILTER_TRANS_MAT_CUTOFF_FREQ_DEFAULT/3);
 	target[0].measurements = SAMPLES + 1;
@@ -177,13 +180,7 @@ int inferPosition() {
 			printf("%d Markers Say:\n", cnt),
 			printMat(inferred);
 			*/
-
-		lock_guard<mutex> lk(loc_mtx);
-		memcpy(trans, inferred, sizeof inferred);
-
-		if (arFilterTransMat(transFilter, trans, !transValid) < 0)
-			ARLOGe("arFilterTransMat error with camera transform.\n");
-		transValid = true;
+		applyTrans(inferred);
 	} else if(runMode == RUN_MODE_POSITIONER) {
 		// Take what we can get!
 		double conf = 0; int mostConf = -1;
@@ -198,16 +195,9 @@ int inferPosition() {
 
 		if (mostConf != -1) {
 //			cout << "Taking what i can get! " << mostConf << endl;
-			lock_guard<mutex> lk(loc_mtx);
-			memcpy(trans, target[mostConf].inferred_position, sizeof trans);
-
-			if (arFilterTransMat(transFilter, trans, !transValid) < 0)
-				ARLOGe("arFilterTransMat error with camera transform.\n");
-
 			glColor3f(.7f, .7f, .1f);
 			draw(target[mostConf].marker_trans);
-
-			transValid = true;
+			applyTrans(target[mostConf].inferred_position);
 		}
 	}
 
@@ -220,8 +210,8 @@ void idTrans(ARdouble trans[3][4]) {
 }
 
 int inferPositionFancy() {
-	ARdouble inferred[3][4], tmp[3][4];
-	static ARdouble discovery[3][4], transition[3][4];
+	//ARdouble inferred[3][4], tmp[3][4], tmp2[3][4];
+	//static ARdouble discovery[3][4], transition[3][4], adjustment[3][4];
 	static int lastKnown;
 
 	/*ARdouble testA[3][4], testB[3][4];
@@ -236,8 +226,8 @@ int inferPositionFancy() {
 
 	if (!transValid) {
 		lastKnown = 0;
-		idTrans(discovery);
-		idTrans(transition);
+		//idTrans(discovery);
+		//idTrans(transition);
 	}
 
 	int lowestAvailable = marker_num, canInfer = false;
@@ -245,35 +235,46 @@ int inferPositionFancy() {
 		int id = marker_info[i].id;
 		if (id == -1 || target[id].idx != i) continue;
 		if (!saneMatrix(target[id].marker_trans) || !saneMatrix(target[id].marker_trans_inv)) continue;
+		//if (id != 0 && !target[id].viable) continue;
 
-		if (id == lastKnown) canInfer = true;
+		if (id == lastKnown)canInfer = true;
 		lowestAvailable = min(lowestAvailable, id);
 	}
 
-	if (lowestAvailable == 0) {
-		idTrans(discovery);
-		idTrans(transition);
+	/*if (canInfer) {
+		for (int i = 0; i < marker_num; i++) {
+			int id = marker_info[i].id;
+			if (id == -1 || target[id].idx != i) continue;
+			if (!saneMatrix(target[id].marker_trans) || !saneMatrix(target[id].marker_trans_inv)) continue;
+			if (!id || id == lastKnown) continue;
+
+			arUtilMatMul(target[lastKnown].marker_trans, target[id].marker_trans_inv, target[id].trick_adjustment);
+			if (arFilterTransMat(target[id].trick_adjustment_filter, target[id].trick_adjustment, !target[id].viable) < 0)
+				ARLOGe("arFilterTransMat error with camera transform.\n");
+			target[id].viable = true;
+		}
+		for (int i = 0; i < targets; i++)
+			if (target[i].id && target[i].idx == -1)
+				target[i].viable = false;
+	} else*/ if (lowestAvailable == 0) {
+		//idTrans(discovery);
+		//idTrans(transition);
 		lastKnown = 0;
 		canInfer = true;
 	} else if (!canInfer && lowestAvailable != marker_num) {
-		memcpy(transition, trans, sizeof transition);
-		memcpy(discovery, target[lowestAvailable].marker_trans, sizeof discovery);
+		/*memcpy(transition, trans, sizeof transition);
+		memcpy(discovery, target[lowestAvailable].marker_trans, sizeof discovery);*/
 		lastKnown = lowestAvailable;
 		canInfer = true;
 	}
 
 	if (canInfer) {
-		arUtilMatMul(target[lastKnown].marker_trans_inv, discovery, tmp);
-		arUtilMatMul(transition, tmp, inferred);
+		/*arUtilMatMul(target[lastKnown].marker_trans_inv, discovery, tmp);
+		arUtilMatMul(transition, tmp, inferred);*/
+
 		glColor3f(0.0f, 1.0f, 0.0f);
 		draw(target[lastKnown].marker_trans);
-
-		lock_guard<mutex> lk(loc_mtx);
-		memcpy(trans, inferred, sizeof inferred);
-
-		if (arFilterTransMat(transFilter, trans, !transValid) < 0)
-			ARLOGe("arFilterTransMat error with camera transform.\n");
-		transValid = true;
+		applyTrans(target[lastKnown].inferred_position);
 	}
 
 	return canInfer;
@@ -331,4 +332,13 @@ bool saneMatrix(double mat[3][4]) {
 			if (fabs(mat[i][j]) > 1e6)
 				return false;
 	return true;
+}
+
+void applyTrans(double next[3][4]) {
+	lock_guard<mutex> lk(loc_mtx);
+	memcpy(trans, next, sizeof next);
+
+	if (arFilterTransMat(transFilter, trans, !transValid) < 0)
+		ARLOGe("arFilterTransMat error with camera transform.\n");
+	transValid = true;
 }
