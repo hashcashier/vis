@@ -233,11 +233,15 @@ int inferPositionFancy() {
 	int lowestAvailable = marker_num, canInfer = false;
 	for (int i = 0; i < marker_num; i++) {
 		int id = marker_info[i].id;
+		cerr << "-----------------" << endl;
+		cerr << i << ' ' << id << ' ' << target[id].idx << endl;
+		cerr << saneMatrix(target[id].marker_trans) << ' ' << saneMatrix(target[id].marker_trans_inv) << endl;
+		cerr << "-----------------" << endl;
 		if (id == -1 || target[id].idx != i) continue;
 		if (!saneMatrix(target[id].marker_trans) || !saneMatrix(target[id].marker_trans_inv)) continue;
 		//if (id != 0 && !target[id].viable) continue;
 
-		if (id == lastKnown)canInfer = true;
+		if (id == lastKnown) canInfer = true;
 		lowestAvailable = min(lowestAvailable, id);
 	}
 
