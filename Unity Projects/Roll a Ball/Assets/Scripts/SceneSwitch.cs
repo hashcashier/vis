@@ -11,7 +11,7 @@ public class SceneSwitch : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKey (KeyCode.LeftControl)) {
+		if (Input.GetKey (KeyCode.LeftControl) || Input.GetKey (KeyCode.RightControl) ) {
 			if (Input.GetKeyDown (KeyCode.Alpha1)) {
 				Application.LoadLevel (0);
 			} else if (Input.GetKeyDown (KeyCode.Alpha2)) {

@@ -6,6 +6,7 @@ Direct3D:
     Vendor:   Intel
     VRAM:     896 MB
 Begin MonoManager ReloadAssembly
+<<<<<<< HEAD
 Platform assembly: C:\Users\mci-admin\Desktop\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading C:\Users\mci-admin\Desktop\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\mci-admin\Desktop\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
@@ -17,6 +18,19 @@ Loading C:\Users\mci-admin\Desktop\Rami\Unity Projects\Roll a Ball\Games\Hall Si
 Platform assembly: C:\Users\mci-admin\Desktop\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
 Loading C:\Users\mci-admin\Desktop\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
 - Completed reload, in  0.170 seconds
+=======
+Platform assembly: C:\Users\Admin_2\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Admin_2\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Admin_2\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Admin_2\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Admin_2\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Admin_2\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Admin_2\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Admin_2\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Admin_2\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
+Loading C:\Users\Admin_2\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
+- Completed reload, in  0.128 seconds
+>>>>>>> f79919de00d73f3d5beb38ac15a457b31a1f9161
 <RI> Initializing input.
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
@@ -39,7 +53,13 @@ MarkerGPS: 33 available.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
+<<<<<<< HEAD
 MarkerGPS: 10734.17    -35159.47    12935.27
+=======
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 17b8 -> priority: 1 
+MarkerGPS: 1 available.
+>>>>>>> f79919de00d73f3d5beb38ac15a457b31a1f9161
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -3448,6 +3468,7 @@ MarkerGPS: No timely response!
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
+<<<<<<< HEAD
 MarkerGPS: 33 available.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -52804,4 +52825,23 @@ C:\Windows\SYSTEM32\ntmarta.dll:ntmarta.dll (73AE0000), size: 163840 (result: 0)
 C:\Users\mci-admin\Desktop\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Plugins\OculusPlugin.dll:OculusPlugin.dll (66520000), size: 692224 (result: 0), SymType: '-exported-', PDB: 'C:\Users\mci-admin\Desktop\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Plugins\OculusPlugin.dll'
 
 ========== OUTPUTING STACK TRACE ==================
+=======
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.045738 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1444.
+Total: 1.392720 ms (FindLiveObjects: 0.226873 ms CreateObjectMapping: 0.110185 ms MarkObjects: 1.036498 ms  DeleteObjects: 0.014714 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.410398 ms
+
+Unloading 1051 unused Assets to reduce memory usage. Loaded Objects now: 887.
+Total: 0.819891 ms (FindLiveObjects: 0.134823 ms CreateObjectMapping: 0.093418 ms MarkObjects: 0.388387 ms  DeleteObjects: 0.199155 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.367967 ms
+
+Unloading 245 unused Assets to reduce memory usage. Loaded Objects now: 1445.
+Total: 0.863007 ms (FindLiveObjects: 0.133454 ms CreateObjectMapping: 0.094787 ms MarkObjects: 0.542716 ms  DeleteObjects: 0.087258 ms)
+>>>>>>> f79919de00d73f3d5beb38ac15a457b31a1f9161
 

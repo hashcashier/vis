@@ -1,10 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Oscillate.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SceneSwitch.cs">
     <Files>
-      <File FileName="Assets\Scripts\ProximityAnimator.cs" Line="40" Column="1" />
+      <File FileName="Assets\Scripts\SceneSwitch.cs" Line="14" Column="82" />
+      <File FileName="Assets\Scripts\ProximityAnimator.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\WASD.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SceneSwitch.cs" Line="13" Column="1" />
       <File FileName="Assets\Scripts\Oscillate.cs" Line="24" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
