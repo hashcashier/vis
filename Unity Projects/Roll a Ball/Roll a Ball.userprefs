@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ProximityShower.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SceneSwitch.cs">
     <Files>
-      <File FileName="Assets\Scripts\ProximityShower.cs" Line="28" Column="4" />
+      <File FileName="Assets\Scripts\ProximityAnimator.cs" Line="43" Column="1" />
+      <File FileName="Assets\Scripts\WASD.cs" Line="57" Column="5" />
+      <File FileName="Assets\Scripts\SceneSwitch.cs" Line="13" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
