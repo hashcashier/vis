@@ -54,5 +54,6 @@ public class WASD : MonoBehaviour {
 		
 		Vector3 movement = new Vector3 (moveHorizontal, 0f, moveVertical);
 		rb.velocity =  transform.rotation * movement * speed;
+		//transform.position += transform.rotation * movement * speed * Time.deltaTime;
 	}
 }

@@ -10,7 +10,7 @@ public class Oscillate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		start = 2 * Random.value;
+		start = 0.5f - Random.value;
 	}
 	
 	// Update is called once per frame
