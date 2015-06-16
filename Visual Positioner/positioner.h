@@ -69,4 +69,8 @@ extern	void	initSocketServer();
 extern	void	socketServerMainLoop();
 
 
+// externals from ocular.h
+extern	int		ocular_init();
+extern	void	ocular_exit();
+
 #endif

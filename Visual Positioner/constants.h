@@ -36,6 +36,8 @@
 #include <opencv/cv.h>
 /* Windows Sockets */
 #include <winsock.h>
+/* Oculus Rift SDK */
+#include "OVR_CAPI_0_6_0.h"
 
 using namespace std;
 

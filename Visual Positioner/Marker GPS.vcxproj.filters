@@ -33,6 +33,9 @@
     <ClCompile Include="socketeer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ocular.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="socketeer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ocular.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

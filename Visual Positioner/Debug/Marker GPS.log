@@ -1,13 +1,15 @@
-﻿Build started 6/12/2015 12:42:19 PM.
+﻿Build started 6/16/2015 3:12:23 PM.
      1>Project "C:\Users\Admin_2\Rami\Visual Positioner\Marker GPS.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\ARToolKit5\include\win32-i386" /IC:\ARToolKit5\include /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D __STDC_LIMIT_MACROS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt targeter.cpp
-         targeter.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\OculusSDK/LibOVR/Include/ /IC:\OculusSDK/LibOVRKernel/Src /I"C:\ARToolKit5\include\win32-i386" /IC:\ARToolKit5\include /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D OVR_BUILD_DEBUG /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D __STDC_LIMIT_MACROS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ocular.cpp positioner.cpp
+         ocular.cpp
+         positioner.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\ARToolKit5\lib\win32-i386" /LIBPATH:C:\ARToolKit5\lib ws2_32.lib ARd.lib ARICPd.lib ARgsubd.lib ARvideod.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.lib" /MACHINE:X86 Debug\picasso.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\ARToolKit5\lib\win32-i386" /LIBPATH:C:\ARToolKit5\lib C:\OculusSDK/LibOVR/Lib/Windows/Win32/Debug/VS2013/LibOVR.lib ws2_32.lib ARd.lib ARICPd.lib ARgsubd.lib ARvideod.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\PerMonitorHighDPIAware.manifest" /PDB:"C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.lib" /MACHINE:X86 Debug\picasso.obj
          Debug\plumber.obj
          Debug\positioner.obj
          Debug\socketeer.obj
+         Debug\ocular.obj
          Debug\targeter.obj
          Debug\worldgen.obj
          Marker GPS.vcxproj -> C:\Users\Admin_2\Rami\Visual Positioner\Debug\Marker GPS.exe
@@ -15,4 +17,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:12.61
+Time Elapsed 00:00:05.26

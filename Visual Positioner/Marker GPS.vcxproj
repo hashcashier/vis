@@ -32,6 +32,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="ARToolKit5VC12 Debug.props" />
     <Import Project="WinSock2x32.props" />
+    <Import Project="OculusRiftSDK.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -79,11 +80,13 @@
     <ClCompile Include="plumber.cpp" />
     <ClCompile Include="positioner.cpp" />
     <ClCompile Include="socketeer.cpp" />
+    <ClCompile Include="ocular.cpp" />
     <ClCompile Include="targeter.cpp" />
     <ClCompile Include="worldgen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h" />
+    <ClInclude Include="ocular.h" />
     <ClInclude Include="picasso.h" />
     <ClInclude Include="plumber.h" />
     <ClInclude Include="positioner.h" />

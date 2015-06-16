@@ -32,7 +32,9 @@ int main(int argc, char **argv) {
 			runMode = RUN_MODE_POSITIONER;
 			break;
 	}
-
+	// Initialize Ocular Drift
+	if (runMode == RUN_MODE_POSITIONER && !ocular_init())
+		return -1;
 	
 	// Load configuration
 	loadConfig();
@@ -41,6 +43,7 @@ int main(int argc, char **argv) {
 
 	// Initialize Positoner
 	init(argc, argv);
+
 
 	if(runMode == RUN_MODE_NEW_WORLD) {
 		argSetDispFunc( mainLoopWorldGen, 1 );
