@@ -32,9 +32,6 @@ int main(int argc, char **argv) {
 			runMode = RUN_MODE_POSITIONER;
 			break;
 	}
-	// Initialize Ocular Drift
-	if (runMode == RUN_MODE_POSITIONER && !ocular_init())
-		return -1;
 	
 	// Load configuration
 	loadConfig();
@@ -52,6 +49,14 @@ int main(int argc, char **argv) {
 		initSocketServer();
 		thread udpServer(socketServerMainLoop);
 		udpServer.detach();
+		// Initialize Ocular Drift
+		/*
+		if (ocularDrift = (ocular_init() > 0)) {
+			thread ocularDrifter(ocular_report);
+			ocularDrifter.detach();
+		}
+		*/
+
 		argSetDispFunc( mainLoopTargeter, 1 );
 	}
 

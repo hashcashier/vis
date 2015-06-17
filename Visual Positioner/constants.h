@@ -37,7 +37,7 @@
 /* Windows Sockets */
 #include <winsock.h>
 /* Oculus Rift SDK */
-#include "OVR_CAPI_0_6_0.h"
+#include "OVR_CAPI.h"
 
 using namespace std;
 
