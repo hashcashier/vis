@@ -63,9 +63,9 @@ int detectMarkers() {
     }
 
     marker_num = arGetMarkerNum( arHandle );
-    if( !marker_num ) {
-        return 0;
-	}
+    //if( !marker_num ) {
+    //    return 0;
+	//}
 
     /* grab marker transformations */
     marker_info =  arGetMarker( arHandle ); 
@@ -91,8 +91,8 @@ int detectMarkers() {
 	}
 
 	// HUD info
-	if (count_ar % 60 == 0) {
-		sprintf(fps, "%f[fps] %d/%d markers", 60.0 / arUtilTimer(), recognized_targets, marker_num);
+	if (count_ar % 75 == 0) {
+		sprintf(fps, "%f[fps] %d/%d markers", 75.0 / arUtilTimer(), recognized_targets, marker_num);
 		arUtilTimerReset();
 	}
 	count_ar++;

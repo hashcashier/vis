@@ -31,7 +31,7 @@ public class MarkerGPSSocketClient : MonoBehaviour {
 	
 	void LateUpdate () {
 		if (clientSocket == null) {
-			Debug.LogWarning ("MarkerGPS: No connection.");
+			//Debug.LogWarning ("MarkerGPS: No connection.");
 			return;
 		}
 
@@ -45,11 +45,11 @@ public class MarkerGPSSocketClient : MonoBehaviour {
 			bool positionUpdate = false;
 			Vector3 neuPos = new Vector3();
 			while(clientSocket.Available > 0) {
-				Debug.Log ("MarkerGPS: " + clientSocket.Available.ToString() + " available.");
+				//Debug.Log ("MarkerGPS: " + clientSocket.Available.ToString() + " available.");
 				try {
 					byte[] receivedBytes = clientSocket.Receive (ref serverEndPoint);
 					string response = Encoding.ASCII.GetString (receivedBytes);
-					Debug.Log ("MarkerGPS: " + response);
+					//Debug.Log ("MarkerGPS: " + response);
 					string trimmedResponse = "";
 					for(int i = 0, j = 0; i < response.Length; i++) {
 						if(response[i] == ' ' && j == 1) {
@@ -70,7 +70,7 @@ public class MarkerGPSSocketClient : MonoBehaviour {
 					}
 
 				} catch(SocketException se) {
-					Debug.LogWarning ("MarkerGPS: Socket Error, " + se.Message);
+					//Debug.LogWarning ("MarkerGPS: Socket Error, " + se.Message);
 					break;
 				}
 			}
@@ -83,11 +83,11 @@ public class MarkerGPSSocketClient : MonoBehaviour {
 					neuTransform.y = getVal(neuPos, mapping[1]) * worldFactors.y + worldOffset.y;
 				if(worldFactors.z != 0)
 					neuTransform.z = getVal(neuPos, mapping[2]) * worldFactors.z + worldOffset.z;
-				Debug.Log ("Updating Position To: " + neuTransform.ToString());
+				//Debug.Log ("Updating Position To: " + neuTransform.ToString());
 				transform.position = neuTransform;
 			}
 		} else {
-			Debug.LogWarning ("MarkerGPS: No timely response!");
+			//Debug.LogWarning ("MarkerGPS: No timely response!");
 		}
 	}
 }
