@@ -1,7 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MarkerGPSSocketClient.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ProximityAnimator.cs">
     <Files>
+      <File FileName="Assets\Scripts\ProximityAnimator.cs" Line="44" Column="4" />
       <File FileName="Assets\Scripts\ColliderManipulator.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ProximityShower.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MarkerGPSSocketClient.cs" Line="14" Column="25" />
