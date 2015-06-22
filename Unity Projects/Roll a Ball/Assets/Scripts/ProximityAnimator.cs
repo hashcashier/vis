@@ -9,22 +9,24 @@ public class ProximityAnimator : MonoBehaviour {
 	public string messageOut;
 	public Vector3 transitionPosition;
 	public Vector3 transitionRotation;
-	public GameObject WASD;
+	public GameObject[] WASD;
 
 	private bool triggered;
-	private Rigidbody body;
+	private Rigidbody[] body;
 	private Animator animator;
 	private Animation anim;
 
 	// Use this for initialization
 	void Start () {
 		triggered = false;
-		body = WASD.GetComponent<Rigidbody> ();
+		body = new Rigidbody[WASD.Length];
+		for(int i = 0; i < WASD.Length; i++)
+			body[i] = WASD[i].GetComponent<Rigidbody> ();
 		animator = GetComponent<Animator> ();
 	}
 
-	float distTo(GameObject obj) {
-		Vector3 d = WASD.transform.position - obj.transform.position;
+	float distTo(GameObject A, GameObject B) {
+		Vector3 d = A.transform.position - B.transform.position;
 		return Mathf.Sqrt (d.x * d.x + d.y * d.y + d.z * d.z);
 	}
 
@@ -36,22 +38,27 @@ public class ProximityAnimator : MonoBehaviour {
 		if (target == null)
 			return;
 
-		float dist = distTo (target);
+		for (int i = 0; i < WASD.Length; i++) {
+			if(!WASD[i].activeSelf)
+				continue;
 
-		if (dist > triggerDistance)
-			return;
+			float dist = distTo (WASD[i], target);
 
-		displayMessage (triggered ? messageIn : messageOut);
-		if (Input.GetMouseButtonDown (0)) {
-			if(triggered) {
-				Seating ("Stand");
-			} else {
-				WASD.transform.position = target.transform.position + transitionPosition;
-				WASD.transform.localEulerAngles = target.transform.localEulerAngles + transitionRotation;
-				Seating ("Sit");
+			if (dist > triggerDistance)
+				continue;
+
+			displayMessage (triggered ? messageIn : messageOut);
+			if (Input.GetMouseButtonDown (0)) {
+				if (triggered) {
+					Seating ("Stand");
+				} else {
+					WASD[i].transform.position = target.transform.position + transitionPosition;
+					WASD[i].transform.localEulerAngles = target.transform.localEulerAngles + transitionRotation;
+					Seating ("Sit");
+				}
+				body[i].constraints ^= RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+				triggered = !triggered;
 			}
-			body.constraints ^= RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
-			triggered = !triggered;
 		}
 	}
 

@@ -20,13 +20,8 @@ Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simu
 Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
 Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
 Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
-Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.049 seconds
+- Completed reload, in  0.065 seconds
 <RI> Initializing input.
-XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initialized touch support.
@@ -39,53 +34,13 @@ MarkerGPS: Started.
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 910 -> priority: 1 
-  Thread -> id: 6c0 -> priority: 1 
+  Thread -> id: 1634 -> priority: 1 
+  Thread -> id: 17b0 -> priority: 1 
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.039639 ms
+UnloadTime: 2.545782 ms
 
-Unloading 178 unused Assets to reduce memory usage. Loaded Objects now: 904.
-Total: 0.446076 ms (FindLiveObjects: 0.054476 ms CreateObjectMapping: 0.032764 ms MarkObjects: 0.310674 ms  DeleteObjects: 0.047765 ms)
-
-MarkerGPS: Started.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.203223 ms
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 809.
-Total: 0.409364 ms (FindLiveObjects: 0.037502 ms CreateObjectMapping: 0.028817 ms MarkObjects: 0.314622 ms  DeleteObjects: 0.028027 ms)
-
-MarkerGPS: Started.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.516738 ms
-
-Unloading 94 unused Assets to reduce memory usage. Loaded Objects now: 793.
-Total: 0.645035 ms (FindLiveObjects: 0.056450 ms CreateObjectMapping: 0.043423 ms MarkObjects: 0.444497 ms  DeleteObjects: 0.099479 ms)
-
-MarkerGPS: Started.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.570820 ms
-
-Unloading 100 unused Assets to reduce memory usage. Loaded Objects now: 904.
-Total: 0.412127 ms (FindLiveObjects: 0.046186 ms CreateObjectMapping: 0.028422 ms MarkObjects: 0.292121 ms  DeleteObjects: 0.043818 ms)
-
-MarkerGPS: Started.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.599243 ms
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2537.
-Total: 0.633192 ms (FindLiveObjects: 0.113690 ms CreateObjectMapping: 0.048950 ms MarkObjects: 0.440550 ms  DeleteObjects: 0.029212 ms)
+Unloading 92 unused Assets to reduce memory usage. Loaded Objects now: 1024.
+Total: 0.452390 ms (FindLiveObjects: 0.053686 ms CreateObjectMapping: 0.029211 ms MarkObjects: 0.335148 ms  DeleteObjects: 0.033554 ms)
 
 MarkerGPS: Started.
  
