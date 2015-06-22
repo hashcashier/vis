@@ -12,6 +12,10 @@ public class ProximityShower : MonoBehaviour {
 	void Start () {
 		initialPosition = transform.position;
 	}
+
+	public void updateIP(Vector3 neu) {
+		initialPosition = neu;
+	}
 	
 	// Update is called once per frame
 	void Update () {

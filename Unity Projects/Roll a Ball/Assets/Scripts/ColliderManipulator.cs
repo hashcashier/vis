@@ -18,11 +18,16 @@ public class ColliderManipulator : MonoBehaviour {
 				found = true;
 		if (triggered || !found || !other.gameObject.activeSelf)
 			return;
+
 		for(int i = 0; i < affected.Length; i++) {
 			Vector3 temp = affected[i].transform.position;
 			affected[i].transform.position = new Vector3(0, 0, 0);
 			affected[i].transform.eulerAngles += rotation;
 			affected[i].transform.position = temp + translation;
+
+			ProximityShower prox = affected[i].GetComponent<ProximityShower>();
+			if(prox != null)
+				prox.updateIP(temp + translation);
 		}
 		triggered = !triggered;
 	}
