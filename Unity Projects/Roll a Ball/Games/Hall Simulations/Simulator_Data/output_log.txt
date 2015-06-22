@@ -1,0 +1,53 @@
+Initialize engine version: 5.1.0f3 (ec70b008569d)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 980M (ID=0x13d7)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
+Loading C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
+- Completed reload, in  0.079 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\System.Configuration.dll (this message is harmless)
+Platform assembly: C:\Users\Rami\Rami\Unity Projects\Roll a Ball\Games\Hall Simulations\Simulator_Data\Managed\System.Xml.dll (this message is harmless)
+MarkerGPS: Started.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 508 -> priority: 1 
+  Thread -> id: 1db8 -> priority: 1 
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.269058 ms
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 843.
+Total: 0.469365 ms (FindLiveObjects: 0.053686 ms CreateObjectMapping: 0.040659 ms MarkObjects: 0.356464 ms  DeleteObjects: 0.017764 ms)
+
+MarkerGPS: Started.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at LeapImageRetriever.OnPreRender () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
