@@ -21,7 +21,7 @@ public class ProximityShower : MonoBehaviour {
 	void Update () {
 		float mdist = -1, mdx = -1, mdy = -1, mdz = -1;
 		for(int i = 0; i < target.Length; i++) {
-			if(target[i] == null || !target[i].activeSelf) continue;
+			if(target[i] == null || !target[i].activeSelf || !target[i].activeInHierarchy) continue;
 			Vector3 targetPos = target[i].transform.position;
 			
 			float dx = Mathf.Abs(targetPos.x - initialPosition.x);

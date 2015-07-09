@@ -12,11 +12,15 @@ public class ColliderManipulator : MonoBehaviour {
 	private bool triggered;
 
 	void OnTriggerEnter(Collider other) {
+		if (triggered || !other.gameObject.activeSelf || !other.gameObject.activeInHierarchy)
+			return;
+
 		bool found = false;
 		for (int i = 0; !found && i < watched.Length; i++)
-			if(other.gameObject.Equals(watched[i]))
+			if(other.gameObject.Equals(watched[i]) || other.Equals(watched[i]))
 				found = true;
-		if (triggered || !found || !other.gameObject.activeSelf)
+
+		if (!found)
 			return;
 
 		for(int i = 0; i < affected.Length; i++) {

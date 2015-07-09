@@ -39,7 +39,7 @@ public class ProximityAnimator : MonoBehaviour {
 			return;
 
 		for (int i = 0; i < WASD.Length; i++) {
-			if(!WASD[i].activeSelf)
+			if(!WASD[i].activeSelf || !WASD[i].activeInHierarchy)
 				continue;
 
 			float dist = distTo (WASD[i], target);
